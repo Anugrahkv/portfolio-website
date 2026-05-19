@@ -4,416 +4,507 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anugrah Kizhakke Veedu | Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        /* --- MODERN COLOR THEME --- */
+        /* --- THEME VARIABLES --- */
         :root {
-            --bg-color: #f8fafc;
-            --surface-color: #ffffff;
-            --text-main: #475569;
-            --text-heading: #0f172a;
-            --primary-color: #0284c7; /* Vibrant Sky Blue */
-            --primary-light: #e0f2fe;
-            --accent-color: #0ea5e9;
-            --border-color: #e2e8f0;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
-            --shadow-md: 0 10px 25px -5px rgba(0,0,0,0.05);
-            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            /* Light Theme */
+            --bg-main: #f4f7f6;
+            --bg-card: #ffffff;
+            --text-primary: #2b2d42;
+            --text-secondary: #6c757d;
+            --accent-color: #4361ee;
+            --accent-hover: #3a0ca3;
+            --border-color: #e9ecef;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s ease;
+            --sidebar-width: 260px;
         }
 
-        /* Sleek Dark Mode */
         [data-theme="dark"] {
-            --bg-color: #0b1121;
-            --surface-color: #151e2e;
-            --text-main: #94a3b8;
-            --text-heading: #f8fafc;
-            --primary-color: #38bdf8;
-            --primary-light: #0c4a6e;
-            --accent-color: #7dd3fc;
+            /* Dark Theme */
+            --bg-main: #0f172a;
+            --bg-card: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-color: #3b82f6;
+            --accent-hover: #60a5fa;
             --border-color: #334155;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.5);
-            --shadow-md: 0 10px 25px -5px rgba(0,0,0,0.4);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
         /* --- GLOBAL STYLES --- */
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Smooth scrolling for sidebar jump links */
+        html { scroll-behavior: smooth; }
+
         body {
-            font-family: var(--font-main);
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.7;
-            transition: var(--transition-smooth);
-            -webkit-font-smoothing: antialiased;
-        }
-        a { color: var(--primary-color); text-decoration: none; font-weight: 500; transition: var(--transition-smooth); }
-        a:hover { color: var(--accent-color); }
-        
-        .container { max-width: 1050px; margin: 0 auto; padding: 3rem 1.5rem; }
-        
-        /* Modern Cards */
-        section, .shared-box {
-            background-color: var(--surface-color);
-            padding: 2.5rem;
-            margin-bottom: 2rem;
-            border-radius: 16px;
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--border-color);
-            transition: var(--transition-smooth);
-        }
-        section:hover, .shared-box:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
-        }
-
-        /* --- HEADER & PHOTO STYLES --- */
-        header {
-            background-color: var(--surface-color);
-            padding: 3rem 2.5rem;
-            margin-bottom: 2.5rem;
-            border-radius: 20px;
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--border-color);
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: var(--transition);
             display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        /* Decorative Background Gradient in Header */
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0; right: 0;
-            width: 300px; height: 300px;
-            background: radial-gradient(circle, var(--primary-light) 0%, transparent 70%);
-            opacity: 0.5;
-            z-index: 0;
-            border-radius: 50%;
-            transform: translate(30%, -30%);
         }
 
-        .profile-container {
+        a {
+            text-decoration: none;
+            color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        a:hover { color: var(--accent-hover); }
+        ul { list-style: none; }
+
+        /* --- SIDEBAR (JUMP MENU) --- */
+        .sidebar {
+            width: var(--sidebar-width);
+            background-color: var(--bg-card);
+            border-right: 1px solid var(--border-color);
+            position: fixed;
+            height: 100vh;
             display: flex;
-            align-items: center;
-            gap: 2.5rem;
-            position: relative;
-            z-index: 1;
+            flex-direction: column;
+            z-index: 100;
+            box-shadow: 2px 0 15px rgba(0,0,0,0.03);
         }
 
-        .profile-photo {
-            width: 160px;
-            height: 160px;
+        .sidebar-profile {
+            padding: 2rem 1rem 1rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .sidebar-profile img {
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid var(--surface-color);
-            box-shadow: 0 0 0 3px var(--primary-color), var(--shadow-md);
-            transition: var(--transition-smooth);
+            border: 3px solid var(--accent-color);
+            margin-bottom: 1rem;
         }
-        .profile-photo:hover { transform: scale(1.05) rotate(-2deg); }
 
-        .header-text h1 { 
-            font-size: 2.8rem; 
-            font-weight: 700;
-            letter-spacing: -1px;
-            line-height: 1.2;
-            margin-bottom: 0.5rem; 
-            background: linear-gradient(135deg, var(--text-heading), var(--primary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .sidebar-profile h3 { font-size: 1.1rem; font-weight: 600; }
+        .sidebar-profile p { font-size: 0.85rem; color: var(--text-secondary); }
+
+        .sidebar-nav {
+            flex-grow: 1;
+            padding: 1.5rem 0;
+            overflow-y: auto;
         }
-        
-        .subtitle { 
-            font-size: 1.25rem; 
-            color: var(--text-main); 
-            margin-bottom: 1.2rem; 
-            font-weight: 500; 
+
+        .sidebar-nav li { margin-bottom: 0.2rem; }
+
+        .sidebar-nav a {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 1rem;
+            padding: 1rem 2rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 500;
+            border-left: 3px solid transparent;
         }
+
+        .sidebar-nav a i { font-size: 1.1rem; width: 20px; text-align: center; }
         
-        .subtitle::before {
-            content: '';
-            display: inline-block;
-            width: 8px;
-            height: 8px;
+        .sidebar-nav a:hover, .sidebar-nav a.active {
+            color: var(--accent-color);
+            background-color: rgba(67, 97, 238, 0.05);
+            border-left-color: var(--accent-color);
+        }
+
+        /* --- MAIN CONTENT --- */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            padding: 2rem 3rem;
+            width: calc(100% - var(--sidebar-width));
+            max-width: 1100px;
+        }
+
+        /* --- THEME TOGGLE BUTTON --- */
+        .theme-toggle-wrapper {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 1.5rem;
+            position: sticky;
+            top: 1rem;
+            z-index: 10;
+        }
+
+        .theme-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
-            background-color: var(--primary-color);
-        }
-
-        .contact-info { list-style: none; display: flex; gap: 1.5rem; flex-wrap: wrap; font-size: 0.95rem; font-weight: 500; }
-        .contact-info li { display: flex; align-items: center; gap: 0.4rem; }
-        .contact-info li i { font-style: normal; font-size: 1.1rem; } /* Emojis as icons */
-
-        /* Theme Toggle */
-        .theme-toggle {
-            position: relative;
-            z-index: 1;
-            background: transparent;
-            color: var(--text-main);
-            border: 1px solid var(--border-color);
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
             cursor: pointer;
-            font-weight: 600;
-            font-size: 0.9rem;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            transition: var(--transition-smooth);
-        }
-        .theme-toggle:hover { 
-            background: var(--bg-color); 
-            color: var(--text-heading);
-            transform: translateY(-2px); 
+            justify-content: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
         }
 
-        /* --- MODERN TAB SYSTEM --- */
-        .tab-wrapper {
-            background: var(--surface-color);
-            padding: 0.5rem;
-            border-radius: 50px;
-            display: inline-flex;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--border-color);
-            margin-bottom: 2rem;
+        .theme-btn:hover {
+            transform: scale(1.1);
+            color: var(--accent-color);
         }
-        .tab-controls { display: flex; justify-content: center; width: 100%; text-align: center; margin-bottom: 1rem; }
+
+        /* --- CARDS --- */
+        .card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            scroll-margin-top: 2rem; 
+        }
+
+        /* --- HEADER ACTIONS --- */
+        .social-links {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+            margin-top: 1rem;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--bg-main);
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .social-icon.whatsapp:hover { background: #25D366; color: white; border-color: #25D366; }
+        .social-icon.facebook:hover { background: #1877F2; color: white; border-color: #1877F2; }
+        .social-icon.instagram:hover { background: #E4405F; color: white; border-color: #E4405F; }
+        .social-icon.linkedin:hover { background: #0A66C2; color: white; border-color: #0A66C2; }
+        .social-icon.github:hover { background: #333333; color: white; border-color: #333333; }
+        .social-icon.email:hover { background: var(--accent-color); color: white; border-color: var(--accent-color); }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+        }
+
+        .btn-primary { background-color: var(--accent-color); color: #ffffff; }
+        .btn-primary:hover { background-color: var(--accent-hover); transform: translateY(-2px); color: #ffffff; }
         
+        .btn-outline { background-color: transparent; color: var(--text-primary); border: 2px solid var(--accent-color); }
+        .btn-outline:hover { background-color: var(--accent-color); color: #ffffff; transform: translateY(-2px); }
+
+        /* --- TYPOGRAPHY & SECTIONS --- */
+        h1.main-title { font-size: 2.5rem; font-weight: 700; line-height: 1.2; margin-bottom: 0.5rem; }
+        h2.section-title { font-size: 1.5rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.6rem; }
+        h2.section-title i { color: var(--accent-color); }
+        h3.job-title { font-size: 1.2rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.3rem; }
+        
+        .meta-info { color: var(--accent-color); font-size: 0.9rem; font-weight: 500; margin-bottom: 1rem; }
+
+        ul.custom-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-secondary);
+        }
+        ul.custom-list li::before {
+            content: '\f105';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+        }
+
+        /* --- TABS & CATEGORIZED SKILLS --- */
+        .tab-container {
+            background: var(--bg-main);
+            padding: 0.5rem;
+            border-radius: 10px;
+            display: inline-flex;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border-color);
+        }
+
         .tab-btn {
             background: transparent;
-            color: var(--text-main);
             border: none;
-            padding: 0.8rem 2rem;
-            font-size: 1rem;
+            padding: 0.6rem 1.5rem;
+            border-radius: 8px;
             font-weight: 600;
-            border-radius: 50px;
+            color: var(--text-secondary);
             cursor: pointer;
-            transition: var(--transition-smooth);
+            transition: var(--transition);
         }
-        .tab-btn:hover { color: var(--text-heading); }
-        .tab-btn.active {
-            background: var(--primary-color);
-            color: #ffffff;
-            box-shadow: 0 4px 10px rgba(2, 132, 199, 0.3);
-        }
+
+        .tab-btn.active { background: var(--accent-color); color: white; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
         
-        .role-content { display: none; animation: slideUp 0.5s ease; }
-        .role-content.active { display: block; }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* --- TYPOGRAPHY & LAYOUT --- */
-        h2 { 
-            font-size: 1.5rem; 
-            font-weight: 700;
-            margin-bottom: 1.5rem; 
-            color: var(--text-heading); 
-            display: flex; 
-            align-items: center; 
-            gap: 0.8rem;
-        }
-        h2::after {
-            content: '';
-            flex-grow: 1;
-            height: 1px;
-            background: var(--border-color);
-            margin-left: 1rem;
-        }
-
-        h3 { font-size: 1.2rem; font-weight: 600; margin-top: 1.8rem; margin-bottom: 0.3rem; color: var(--text-heading); }
-        .date-location { font-size: 0.9rem; margin-bottom: 1rem; color: var(--primary-color); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+        .tab-content { display: none; animation: fadeIn 0.4s ease; }
+        .tab-content.active { display: block; }
         
-        ul.bullet-list { margin-left: 1.2rem; margin-bottom: 1rem; }
-        ul.bullet-list li { margin-bottom: 0.6rem; padding-left: 0.5rem; position: relative; list-style-type: disc; color: var(--text-main); }
-        ul.bullet-list li::marker { color: var(--primary-color); }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* --- MODERN SKILLS GRID --- */
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
-        .skill-category { 
-            background: var(--bg-color); 
-            padding: 1.5rem; 
-            border-radius: 12px; 
+        /* Categorized Skills Grid */
+        .skills-category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-box {
+            background: var(--bg-main);
+            padding: 1.5rem;
+            border-radius: 12px;
             border: 1px solid var(--border-color);
-            transition: var(--transition-smooth);
+            transition: var(--transition);
         }
-        .skill-category:hover { border-color: var(--primary-color); }
-        .skill-category h4 { margin-bottom: 1rem; color: var(--text-heading); font-size: 1.05rem; font-weight: 600; }
         
-        .skill-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; }
-        .tag { 
-            background: var(--primary-light); 
-            color: var(--primary-color);
-            padding: 0.4rem 0.8rem; 
-            border-radius: 6px; 
-            font-size: 0.85rem; 
-            font-weight: 600; 
-            border: 1px solid transparent;
-            transition: var(--transition-smooth);
-        }
-        [data-theme="dark"] .tag { background: rgba(56, 189, 248, 0.1); border-color: rgba(56, 189, 248, 0.2); }
-        .tag:hover { transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+        .skill-box:hover { border-color: var(--accent-color); box-shadow: var(--shadow); }
 
-        /* --- PRINT STYLES (STRICT ATS COMPLIANCE) --- */
-        @media print {
-            body { background: #fff !important; color: #000 !important; font-size: 11pt !important; font-family: Arial, sans-serif !important; }
-            .container { padding: 0; max-width: 100%; margin: 0; }
-            header, section, .shared-box { box-shadow: none !important; border: none !important; padding: 0 0 1.5rem 0 !important; margin-bottom: 1rem !important; page-break-inside: avoid; background: transparent !important; }
-            .theme-toggle, .tab-controls, .tab-wrapper { display: none !important; } 
-            
-            /* Remove Gradients for Print */
-            .header-text h1 { background: none !important; -webkit-text-fill-color: #000 !important; color: #000 !important; }
-            header::before { display: none !important; }
-            
-            h2 { border-bottom: 1px solid #000 !important; color: #000 !important; margin-bottom: 1rem !important; }
-            h2::after { display: none !important; } /* Hide the decorative line */
-            h3, p, li, span, div { color: #000 !important; }
-            a { color: #000 !important; text-decoration: none !important; }
-            
-            .skill-category { background: transparent !important; border: 1px solid #ccc !important; padding: 1rem !important; }
-            .tag { border: 1px solid #666 !important; background: transparent !important; color: #000 !important; }
-            
-            .role-content { display: none !important; }
-            .role-content.active { display: block !important; } 
-            
-            .profile-photo { width: 90px !important; height: 90px !important; border: 1px solid #000 !important; box-shadow: none !important; }
-            .profile-container { gap: 1.5rem !important; }
+        .skill-box h4 {
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
+        
+        .skill-box h4 i { color: var(--accent-color); }
+
+        .tags-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .tag {
+            background: var(--bg-card);
+            color: var(--text-primary);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+        .tag:hover { border-color: var(--accent-color); color: var(--accent-color); }
+
+        .experience-item { margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border-color); }
+        .experience-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
 
         /* --- RESPONSIVE --- */
-        @media (max-width: 800px) {
-            header { flex-direction: column; text-align: center; padding: 2rem 1.5rem; }
-            .profile-container { flex-direction: column; width: 100%; }
-            .contact-info { justify-content: center; }
-            .theme-toggle { position: absolute; top: 1rem; right: 1rem; }
-            .tab-wrapper { width: 100%; }
-            .tab-btn { padding: 0.8rem 1rem; width: 50%; font-size: 0.9rem; }
+        @media (max-width: 900px) {
+            body { flex-direction: column; }
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+            }
+            .sidebar-profile { display: none; }
+            .sidebar-nav { display: flex; flex-wrap: nowrap; overflow-x: auto; padding: 1rem; }
+            .sidebar-nav a { padding: 0.5rem 1rem; border-left: none; border-bottom: 3px solid transparent; white-space: nowrap; }
+            .sidebar-nav a:hover, .sidebar-nav a.active { border-left-color: transparent; border-bottom-color: var(--accent-color); }
+            
+            .main-content { margin-left: 0; width: 100%; padding: 1.5rem; }
+        }
+        @media (max-width: 600px) {
+            .action-buttons { flex-direction: column; }
+            .btn { width: 100%; justify-content: center; }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <div class="profile-container">
-                <img src="portfolio.jpeg" alt="Anugrah Kizhakke Veedu" class="profile-photo" onerror="this.src='https://via.placeholder.com/160/0284c7/ffffff?text=Photo'">
-                <div class="header-text">
-                    <h1>ANUGRAH KIZHAKKE VEEDU</h1>
-                    <div class="subtitle">MSc Cyber Security Graduate</div>
-                    <ul class="contact-info">
-                        <li><i>📧</i> <a href="mailto:anugrahkv07@gmail.com">anugrahkv07@gmail.com</a></li>
-                        <li>
-                            <i>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#25D366" viewBox="0 0 16 16" style="vertical-align: middle;">
-                                  <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
-                                </svg>
-                            </i> 
-                            <a href="https://wa.me/918547743622" target="_blank">+91 8547743622</a>
-                        </li>
-                        <li><i>📍</i> Kannur, Kerala, India</li>
-                        <li><i>🔗</i> <a href="https://www.linkedin.com/in/anugrah-kizhakke-veedu" target="_blank">LinkedIn</a></li>
-                        <li><i>💻</i> <a href="https://github.com/Anugrahkv" target="_blank">GitHub</a></li>
-                        <li><i>📸</i> <a href="https://www.instagram.com/_an.ugr.ah_?igsh=ZzAzdXIzdzUyOGhk" target="_blank">Instagram</a></li>
-                        <li><i>📘</i> <a href="https://www.facebook.com/share/1BGku8fhm7/?mibextid=wwXIfr" target="_blank">Facebook</a></li>
-                    </ul>
-                </div>
-            </div>
-            <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn">
-                <span id="theme-icon">🌙</span> Dark
-            </button>
-        </header>
+    <style>
+        @keyframes pulse-green {
+            0% { box-shadow: 0 0 0 0 rgba(46, 213, 115, 0.7); }
+            70% { box-shadow: 0 0 0 8px rgba(46, 213, 115, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(46, 213, 115, 0); }
+        }
+    </style>
 
-        <section id="summary" class="shared-box">
-            <h2>Professional Summary</h2>
-            <p>Results-driven IT professional and MSc Cyber Security graduate specializing in robust systems administration and proactive network defense. Proven expertise in deploying highly available Linux (Ubuntu) server environments, optimizing network traffic routing via pfSense Next-Gen firewalls, and engineering centralized observability pipelines using the ELK Stack. Adept at managing enterprise-grade SIEM solutions, conducting incident response, and performing comprehensive threat analysis mapped to the MITRE ATT&CK and OWASP frameworks. Dedicated to optimizing system uptime while safeguarding critical infrastructure against evolving vulnerabilities.</p>
-        </section>
-
-        <div class="tab-controls">
-            <div class="tab-wrapper">
-                <button class="tab-btn active" onclick="switchTab('analyst')" id="btn-analyst">Cybersecurity Analyst</button>
-                <button class="tab-btn" onclick="switchTab('sysadmin')" id="btn-sysadmin">Systems Administrator</button>
-            </div>
-        </div>
-
-        <div id="analyst" class="role-content active shared-box">
-            <h2>Analyst Technical Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h4>Cybersecurity Operations</h4>
-                    <div class="skill-tags">
-                        <span class="tag">Incident Response</span>
-                        <span class="tag">Threat Hunting</span>
-                        <span class="tag">Packet Analysis (Wireshark)</span>
-                        <span class="tag">Log Analysis</span>
-                        <span class="tag">Vulnerability Assessments</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h4>Security Architecture</h4>
-                    <div class="skill-tags">
-                        <span class="tag">Snort IDS</span>
-                        <span class="tag">pfSense Firewalls</span>
-                        <span class="tag">SIEM (ELK Stack)</span>
-                        <span class="tag">Splunk Familiarity</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h4>Frameworks & Secure Dev</h4>
-                    <div class="skill-tags">
-                        <span class="tag">OWASP Top 10</span>
-                        <span class="tag">MITRE ATT&CK</span>
-                        <span class="tag">NIST CSF</span>
-                        <span class="tag">Secure Authentication</span>
-                        <span class="tag">Python</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="sysadmin" class="role-content shared-box">
-            <h2>SysAdmin Technical Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h4>Systems Administration</h4>
-                    <div class="skill-tags">
-                        <span class="tag">Linux/Ubuntu Server</span>
-                        <span class="tag">Infrastructure Provisioning</span>
-                        <span class="tag">User Access Control</span>
-                        <span class="tag">Server Hardening</span>
-                        <span class="tag">Disaster Recovery</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h4>Networking & Infrastructure</h4>
-                    <div class="skill-tags">
-                        <span class="tag">Network Segmentation</span>
-                        <span class="tag">TCP/IP</span>
-                        <span class="tag">DNS/DHCP Admin</span>
-                        <span class="tag">Traffic Routing</span>
-                        <span class="tag">pfSense Gateway</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h4>Observability & Automation</h4>
-                    <div class="skill-tags">
-                        <span class="tag">ELK Stack Dashboards</span>
-                        <span class="tag">Bash Shell Scripting</span>
-                        <span class="tag">Cron Automation</span>
-                        <span class="tag">Hardware Troubleshooting</span>
-                        <span class="tag">Patch Management</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <section id="experience" class="shared-box">
-            <h2>Professional Experience</h2>
+    <aside class="sidebar">
+        <div class="sidebar-profile" style="padding-bottom: 1.5rem;">
+            <img src="portfolio.jpeg" alt="Professional Headshot" onerror="this.src='https://via.placeholder.com/150/4361ee/ffffff?text=Photo'">
             
-            <article>
-                <h3>IT & Application Support / Web Application Development Intern</h3>
-                <div class="date-location">Btrac Solutions | Kerala, India | Sept 2022 – Mar 2023</div>
-                <ul class="bullet-list">
+            <div style="margin-top: 12px; margin-bottom: 8px;">
+                <span style="background: rgba(46, 213, 115, 0.1); color: #2ed573; border: 1px solid rgba(46, 213, 115, 0.3); padding: 5px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 600; display: inline-flex; align-items: center; gap: 8px;">
+                    <span style="width: 8px; height: 8px; background: #2ed573; border-radius: 50%; display: inline-block; animation: pulse-green 2s infinite;"></span>
+                    Open to Opportunities
+                </span>
+            </div>
+            <p style="font-size: 0.8rem; color: var(--text-secondary); font-weight: 600; letter-spacing: 1px; text-transform: uppercase;">Digital Portfolio</p>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="#home" class="active" onclick="setActive(this)"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#summary" onclick="setActive(this)"><i class="fas fa-user-shield"></i> Summary</a></li>
+                <li><a href="#skills" onclick="setActive(this)"><i class="fas fa-laptop-code"></i> Tech Skills</a></li>
+                <li><a href="#experience" onclick="setActive(this)"><i class="fas fa-briefcase"></i> Experience</a></li>
+                <li><a href="#projects" onclick="setActive(this)"><i class="fas fa-project-diagram"></i> Projects</a></li>
+                <li><a href="#education" onclick="setActive(this)"><i class="fas fa-graduation-cap"></i> Education</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        
+        <div class="theme-toggle-wrapper">
+            <button class="theme-btn" onclick="toggleTheme()" id="theme-icon" aria-label="Toggle Dark Mode">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+
+        <div class="card" id="home" style="display: flex; flex-direction: column; align-items: center; text-align: center; padding-top: 2.5rem; padding-bottom: 2.5rem;">
+            
+            <h1 class="main-title" style="margin-bottom: 0.4rem; letter-spacing: -0.5px;">Anugrah Kizhakke Veedu</h1>
+            
+            <p style="color: var(--text-secondary); font-size: 1.1rem; font-weight: 500; margin-bottom: 1.5rem; margin-top: 0;">
+                <span style="color: var(--accent-color); font-weight: 600;">MSc Cyber Security Graduate</span> | IT Systems & Security
+            </p>
+            
+            <div class="social-links" style="justify-content: center; margin-bottom: 1.8rem; margin-top: 0;">
+                <a href="https://wa.me/918547743622" target="_blank" class="social-icon whatsapp" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.facebook.com/share/1BGku8fhm7/?mibextid=wwXIfr" target="_blank" class="social-icon facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/_an.ugr.ah_?igsh=ZzAzdXIzdzUyOGhk" target="_blank" class="social-icon instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/anugrah-kizhakke-veedu" target="_blank" class="social-icon linkedin" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/Anugrahkv" target="_blank" class="social-icon github" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="mailto:anugrahkv07@gmail.com" class="social-icon email" title="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+
+            <div class="action-buttons" style="justify-content: center;">
+                <a href="ANALYSTCV.PDF" download class="btn btn-primary" style="padding: 0.8rem 1.6rem; font-size: 0.95rem;">
+                    <i class="fas fa-file-download"></i> Analyst CV
+                </a>
+                <a href="ADMINCV.PDF" download class="btn btn-outline" style="padding: 0.8rem 1.6rem; font-size: 0.95rem;">
+                    <i class="fas fa-file-download"></i> SysAdmin CV
+                </a>
+            </div>
+        </div>
+
+        <div class="card" id="summary">
+            <h2 class="section-title"><i class="fas fa-user-shield"></i> Professional Summary</h2>
+            <p style="color: var(--text-secondary);">Detail-oriented IT professional and MSc Cyber Security graduate with hands-on experience in network defense, Linux server administration, and secure application development. Proven track record of deploying highly available Ubuntu Server environments, optimizing network traffic via pfSense firewalls, and engineering centralized observability pipelines using the ELK Stack. Adept at conducting comprehensive threat analysis mapped to the MITRE ATT&CK framework and executing incident response protocols. Dedicated to safeguarding critical infrastructure against evolving vulnerabilities while maintaining optimal system reliability.</p>
+        </div>
+
+        <div class="card" id="skills">
+            <h2 class="section-title"><i class="fas fa-laptop-code"></i> Technical Skills</h2>
+            
+            <div class="tab-container">
+                <button class="tab-btn active" onclick="switchTab('analyst')" id="btn-analyst">Analyst Skills</button>
+                <button class="tab-btn" onclick="switchTab('sysadmin')" id="btn-sysadmin">SysAdmin Skills</button>
+            </div>
+
+            <div id="analyst" class="tab-content active">
+                <div class="skills-category-grid">
+                    <div class="skill-box">
+                        <h4><i class="fas fa-search-shield"></i> Cybersecurity Ops</h4>
+                        <div class="tags-grid">
+                            <span class="tag">Incident Response</span>
+                            <span class="tag">Threat Hunting</span>
+                            <span class="tag">Packet Analysis (Wireshark)</span>
+                            <span class="tag">Log Analysis</span>
+                            <span class="tag">Vulnerability Assessments</span>
+                        </div>
+                    </div>
+                    <div class="skill-box">
+                        <h4><i class="fas fa-sitemap"></i> Security Architecture</h4>
+                        <div class="tags-grid">
+                            <span class="tag">Snort IDS</span>
+                            <span class="tag">pfSense Firewalls</span>
+                            <span class="tag">SIEM (ELK Stack)</span>
+                            <span class="tag">Splunk Familiarity</span>
+                        </div>
+                    </div>
+                    <div class="skill-box">
+                        <h4><i class="fas fa-code-branch"></i> Frameworks & Dev</h4>
+                        <div class="tags-grid">
+                            <span class="tag">OWASP Top 10</span>
+                            <span class="tag">MITRE ATT&CK</span>
+                            <span class="tag">NIST CSF</span>
+                            <span class="tag">Secure Authentication</span>
+                            <span class="tag">Python</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="sysadmin" class="tab-content">
+                <div class="skills-category-grid">
+                    <div class="skill-box">
+                        <h4><i class="fas fa-server"></i> Systems Administration</h4>
+                        <div class="tags-grid">
+                            <span class="tag">Linux/Ubuntu Server</span>
+                            <span class="tag">Infrastructure Provisioning</span>
+                            <span class="tag">User Access Control</span>
+                            <span class="tag">Server Hardening</span>
+                            <span class="tag">Disaster Recovery</span>
+                        </div>
+                    </div>
+                    <div class="skill-box">
+                        <h4><i class="fas fa-network-wired"></i> Networking & Infra</h4>
+                        <div class="tags-grid">
+                            <span class="tag">Network Segmentation</span>
+                            <span class="tag">TCP/IP</span>
+                            <span class="tag">DNS/DHCP Admin</span>
+                            <span class="tag">Traffic Routing</span>
+                            <span class="tag">pfSense Gateway</span>
+                        </div>
+                    </div>
+                    <div class="skill-box">
+                        <h4><i class="fas fa-cogs"></i> Observability & Automation</h4>
+                        <div class="tags-grid">
+                            <span class="tag">ELK Stack Dashboards</span>
+                            <span class="tag">Bash Shell Scripting</span>
+                            <span class="tag">Cron Automation</span>
+                            <span class="tag">Hardware Troubleshooting</span>
+                            <span class="tag">Patch Management</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" id="experience">
+            <h2 class="section-title"><i class="fas fa-briefcase"></i> Professional Experience</h2>
+            
+            <div class="experience-item">
+                <h3 class="job-title">IT & Application Support / Web Application Development Intern</h3>
+                <div class="meta-info"><i class="fas fa-map-marker-alt"></i> Btrac Solutions | Kerala, India &nbsp;&bull;&nbsp; <i class="far fa-calendar-alt"></i> Sept 2022 – Mar 2023</div>
+                <ul class="custom-list">
                     <li>Supervised the day-to-day operations, log consistency, and system patch levels across internal evaluation servers and client-facing production hosting nodes.</li>
                     <li>Developed and maintained critical, secure web components utilizing Python and the Django framework to scale secure application architecture.</li>
                     <li>Championed secure coding initiatives by conducting routine code reviews, proactively identifying and mitigating OWASP Top 10 vulnerabilities prior to production release cycles.</li>
@@ -423,84 +514,100 @@
                     <li>Documented infrastructure deployment workflows, network architecture maps, and asset inventories to drastically cut down internal team transition friction.</li>
                     <li>Collaborated closely with engineering squads to securely deploy patches across staging environments, tracking performance optimizations that reduced page response latencies.</li>
                 </ul>
-            </article>
-        </section>
+            </div>
+        </div>
 
-        <section id="projects" class="shared-box">
-            <h2>Key Projects</h2>
-            <article>
-                <h3>Intrusion Detection & Enterprise Network Monitoring System</h3>
-                <p><strong>Technologies:</strong> Ubuntu Server, pfSense Firewall, Snort IDS, ELK Stack (Elasticsearch, Logstash, Kibana) | 2024</p>
-                <ul class="bullet-list">
+        <div class="card" id="projects">
+            <h2 class="section-title"><i class="fas fa-project-diagram"></i> Key Projects</h2>
+            
+            <div class="experience-item">
+                <h3 class="job-title">Intrusion Detection & Enterprise Network Monitoring System</h3>
+                <div class="meta-info">Ubuntu Server, pfSense Firewall, Snort IDS, ELK Stack &nbsp;&bull;&nbsp; 2024</div>
+                <ul class="custom-list">
                     <li>Deployed and administered enterprise Ubuntu Server instances to orchestrate centralized configuration management and internal network utilities.</li>
                     <li>Configured a pfSense firewall interface and integrated Snort IDS to establish real-time threat detection, manage access control lists (ACLs), and automate network defense policies.</li>
                     <li>Engineered and fine-tuned 15+ custom detection rules, reducing false-positive alerts by 20% while expanding defensive visibility against critical CVEs mapped to MITRE ATT&CK vectors.</li>
                     <li>Deployed the ELK Stack to aggregate high-volume syslog data, construct interactive Kibana security dashboards, and generate actionable threat intelligence documentation.</li>
                     <li>Executed 4 distinct simulated network attack vectors (including DoS, Brute Force, and Port Scanning) to validate system resilience, packet capture (PCAP) accuracy, and response speed.</li>
                 </ul>
-            </article>
-            <article>
-                <h3>TrippyGo Secure Full-Stack Web Application</h3>
-                <p><strong>Technologies:</strong> Python, Django, HTML, CSS, SQLite, Linux Architecture | 2023</p>
-                <ul class="bullet-list">
+            </div>
+
+            <div class="experience-item">
+                <h3 class="job-title">TrippyGo Secure Full-Stack Web Application</h3>
+                <div class="meta-info">Python, Django, HTML, CSS, SQLite, Linux Architecture &nbsp;&bull;&nbsp; 2023</div>
+                <ul class="custom-list">
                     <li>Developed a full-stack travel management web application from scratch, prioritizing modern data protection standards, input sanitization, and secure user interactions.</li>
                     <li>Implemented robust user authentication workflows, cryptographic session management, and strict form field validation to systematically eliminate SQL injection (SQLi) and XSS vulnerabilities.</li>
                     <li>Provisioned and maintained the underlying operating system environment and production host resources for a high-availability travel application framework.</li>
                     <li>Initialized and managed completely isolated staging and production sandbox environments, developing scheduled maintenance scripts to eliminate deployment downtime.</li>
                 </ul>
-            </article>
-        </section>
-
-        <section id="education" class="shared-box">
-            <h2>Education & Languages</h2>
-            <ul class="bullet-list">
-                <li><strong>Master of Science in Cyber Security</strong> - Teesside University, Middlesbrough, UK (2023 - 2024)</li>
-                <li><strong>Bachelor's Degree in Computer Application</strong> - Kannur University, Kerala, India (2020 - 2023)</li>
-            </ul>
-            <br>
-            <h3 style="margin-top: 0;">Languages</h3>
-            <div class="skill-tags" style="margin-top: 0.8rem;">
-                <span class="tag">English (Fluent)</span>
-                <span class="tag">Hindi (Fluent)</span>
-                <span class="tag">Tamil (Proficient)</span>
-                <span class="tag">Malayalam (Native)</span>
             </div>
-        </section>
-    </div>
+        </div>
+
+        <div class="card" id="education">
+            <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Education & Languages</h2>
+            
+            <div class="experience-item" style="margin-bottom: 1.5rem; padding-bottom: 1.5rem;">
+                <h3 class="job-title">Master of Science in Cyber Security</h3>
+                <div class="meta-info">Teesside University, Middlesbrough, UK &nbsp;&bull;&nbsp; 2023 - 2024</div>
+            </div>
+            
+            <div class="experience-item" style="margin-bottom: 1.5rem; padding-bottom: 1.5rem;">
+                <h3 class="job-title">Bachelor's Degree in Computer Application</h3>
+                <div class="meta-info">Kannur University, Kerala, India &nbsp;&bull;&nbsp; 2020 - 2023</div>
+            </div>
+            
+            <div class="experience-item" style="border: none; margin-bottom: 0; padding-bottom: 0;">
+                <h3 class="job-title" style="margin-bottom: 0.8rem;">Languages</h3>
+                <div class="tags-grid">
+                    <span class="tag">English (Fluent)</span>
+                    <span class="tag">Hindi (Fluent)</span>
+                    <span class="tag">Tamil (Proficient)</span>
+                    <span class="tag">Malayalam (Native)</span>
+                </div>
+            </div>
+        </div>
+
+    </main>
 
     <script>
-        // --- TAB SWITCHING LOGIC ---
-        function switchTab(role) {
+        // --- Tab Switching Logic ---
+        function switchTab(tabId) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            document.querySelectorAll('.role-content').forEach(content => content.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
             
-            document.getElementById('btn-' + role).classList.add('active');
-            document.getElementById(role).classList.add('active');
+            document.getElementById('btn-' + tabId).classList.add('active');
+            document.getElementById(tabId).classList.add('active');
         }
 
-        // --- DYNAMIC DARK MODE SCRIPT ---
+        // --- Sidebar Navigation Active State ---
+        function setActive(element) {
+            document.querySelectorAll('.sidebar-nav a').forEach(link => link.classList.remove('active'));
+            element.classList.add('active');
+        }
+
+        // --- Dark/Light Mode Toggle Logic ---
+        const body = document.body;
+        const themeIcon = document.getElementById('theme-icon');
+
+        if (localStorage.getItem('theme') === 'dark') {
+            body.setAttribute('data-theme', 'dark');
+            themeIcon.innerHTML = '<i class="fas fa-sun"></i>';
+        } else {
+            body.setAttribute('data-theme', 'light');
+            themeIcon.innerHTML = '<i class="fas fa-moon"></i>';
+        }
+
         function toggleTheme() {
-            const body = document.documentElement;
-            const icon = document.getElementById('theme-icon');
-            
             if (body.getAttribute('data-theme') === 'dark') {
-                body.removeAttribute('data-theme');
+                body.setAttribute('data-theme', 'light');
                 localStorage.setItem('theme', 'light');
-                icon.textContent = '🌙';
-                document.getElementById('theme-btn').innerHTML = '<span id="theme-icon">🌙</span> Dark';
+                themeIcon.innerHTML = '<i class="fas fa-moon"></i>';
             } else {
                 body.setAttribute('data-theme', 'dark');
                 localStorage.setItem('theme', 'dark');
-                icon.textContent = '☀️';
-                document.getElementById('theme-btn').innerHTML = '<span id="theme-icon">☀️</span> Light';
+                themeIcon.innerHTML = '<i class="fas fa-sun"></i>';
             }
-        }
-
-        // Check for saved user preference on load
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            document.getElementById('theme-btn').innerHTML = '<span id="theme-icon">☀️</span> Light';
         }
     </script>
 </body>
