@@ -223,9 +223,6 @@
 
         .btn-primary { background-color: var(--accent-color); color: #ffffff; }
         .btn-primary:hover { background-color: var(--accent-hover); transform: translateY(-2px); color: #ffffff; }
-        
-        .btn-outline { background-color: transparent; color: var(--text-primary); border: 2px solid var(--accent-color); }
-        .btn-outline:hover { background-color: var(--accent-color); color: #ffffff; transform: translateY(-2px); }
 
         /* --- TYPOGRAPHY & SECTIONS --- */
         h1.main-title { font-size: 2.5rem; font-weight: 700; line-height: 1.2; margin-bottom: 0.5rem; }
@@ -250,35 +247,7 @@
             color: var(--accent-color);
         }
 
-        /* --- TABS & CATEGORIZED SKILLS --- */
-        .tab-container {
-            background: var(--bg-main);
-            padding: 0.5rem;
-            border-radius: 10px;
-            display: inline-flex;
-            margin-bottom: 1.5rem;
-            border: 1px solid var(--border-color);
-        }
-
-        .tab-btn {
-            background: transparent;
-            border: none;
-            padding: 0.6rem 1.5rem;
-            border-radius: 8px;
-            font-weight: 600;
-            color: var(--text-secondary);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .tab-btn.active { background: var(--accent-color); color: white; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        
-        .tab-content { display: none; animation: fadeIn 0.4s ease; }
-        .tab-content.active { display: block; }
-        
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* Categorized Skills Grid */
+        /* --- SKILLS GRID --- */
         .skills-category-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -406,11 +375,8 @@
             </div>
 
             <div class="action-buttons" style="justify-content: center;">
-                <a href="ANALYSTCV.pdf" download class="btn btn-primary" style="padding: 0.8rem 1.6rem; font-size: 0.95rem;">
-                    <i class="fas fa-file-download"></i> Analyst CV
-                </a>
-                <a href="ADMINCV.pdf" download class="btn btn-outline" style="padding: 0.8rem 1.6rem; font-size: 0.95rem;">
-                    <i class="fas fa-file-download"></i> SysAdmin CV
+                <a href="AnugrahCV.pdf" download class="btn btn-primary" style="padding: 0.8rem 1.6rem; font-size: 0.95rem;">
+                    <i class="fas fa-file-download"></i> Download CV
                 </a>
             </div>
         </div>
@@ -420,79 +386,51 @@
             <p style="color: var(--text-secondary);">Detail-oriented IT professional and MSc Cyber Security graduate with hands-on experience in network defense, Linux server administration, and secure application development. Proven track record of deploying highly available Ubuntu Server environments, optimizing network traffic via pfSense firewalls, and engineering centralized observability pipelines using the ELK Stack. Adept at conducting comprehensive threat analysis mapped to the MITRE ATT&CK framework and executing incident response protocols. Dedicated to safeguarding critical infrastructure against evolving vulnerabilities while maintaining optimal system reliability.</p>
         </div>
 
-        <div class="card" id="skills">
+<div class="card" id="skills">
             <h2 class="section-title"><i class="fas fa-laptop-code"></i> Technical Skills</h2>
             
-            <div class="tab-container">
-                <button class="tab-btn active" onclick="switchTab('analyst')" id="btn-analyst">Analyst Skills</button>
-                <button class="tab-btn" onclick="switchTab('sysadmin')" id="btn-sysadmin">SysAdmin Skills</button>
-            </div>
-
-            <div id="analyst" class="tab-content active">
-                <div class="skills-category-grid">
-                    <div class="skill-box">
-                        <h4><i class="fas fa-search-shield"></i> Cybersecurity Ops</h4>
-                        <div class="tags-grid">
-                            <span class="tag">Incident Response</span>
-                            <span class="tag">Threat Hunting</span>
-                            <span class="tag">Packet Analysis (Wireshark)</span>
-                            <span class="tag">Log Analysis</span>
-                            <span class="tag">Vulnerability Assessments</span>
-                        </div>
-                    </div>
-                    <div class="skill-box">
-                        <h4><i class="fas fa-sitemap"></i> Security Architecture</h4>
-                        <div class="tags-grid">
-                            <span class="tag">Snort IDS</span>
-                            <span class="tag">pfSense Firewalls</span>
-                            <span class="tag">SIEM (ELK Stack)</span>
-                            <span class="tag">Splunk Familiarity</span>
-                        </div>
-                    </div>
-                    <div class="skill-box">
-                        <h4><i class="fas fa-code-branch"></i> Frameworks & Dev</h4>
-                        <div class="tags-grid">
-                            <span class="tag">OWASP Top 10</span>
-                            <span class="tag">MITRE ATT&CK</span>
-                            <span class="tag">NIST CSF</span>
-                            <span class="tag">Secure Authentication</span>
-                            <span class="tag">Python</span>
-                        </div>
+            <div class="skills-category-grid">
+                <div class="skill-box">
+                    <h4><i class="fas fa-search-shield"></i> Cybersecurity Ops</h4>
+                    <div class="tags-grid">
+                        <span class="tag">Incident Response</span>
+                        <span class="tag">Threat Hunting</span>
+                        <span class="tag">Packet Analysis (Wireshark)</span>
+                        <span class="tag">Log & Traffic Analysis</span>
+                        <span class="tag">Vulnerability Assessments</span>
                     </div>
                 </div>
-            </div>
+                
+                <div class="skill-box">
+                    <h4><i class="fas fa-sitemap"></i> Security Architecture</h4>
+                    <div class="tags-grid">
+                        <span class="tag">Snort IDS</span>
+                        <span class="tag">pfSense Firewalls</span>
+                        <span class="tag">SIEM (ELK Stack, Splunk)</span>
+                        <span class="tag">Network Segmentation</span>
+                        <span class="tag">TCP/IP & DNS/DHCP</span>
+                    </div>
+                </div>
 
-            <div id="sysadmin" class="tab-content">
-                <div class="skills-category-grid">
-                    <div class="skill-box">
-                        <h4><i class="fas fa-server"></i> Systems Administration</h4>
-                        <div class="tags-grid">
-                            <span class="tag">Linux/Ubuntu Server</span>
-                            <span class="tag">Infrastructure Provisioning</span>
-                            <span class="tag">User Access Control</span>
-                            <span class="tag">Server Hardening</span>
-                            <span class="tag">Disaster Recovery</span>
-                        </div>
+                <div class="skill-box">
+                    <h4><i class="fas fa-server"></i> Systems & Infrastructure</h4>
+                    <div class="tags-grid">
+                        <span class="tag">Linux/Ubuntu Server</span>
+                        <span class="tag">Server Hardening</span>
+                        <span class="tag">Backup & Disaster Recovery</span>
+                        <span class="tag">Infrastructure Provisioning</span>
+                        <span class="tag">Patch Management</span>
                     </div>
-                    <div class="skill-box">
-                        <h4><i class="fas fa-network-wired"></i> Networking & Infra</h4>
-                        <div class="tags-grid">
-                            <span class="tag">Network Segmentation</span>
-                            <span class="tag">TCP/IP</span>
-                            <span class="tag">DNS/DHCP Admin</span>
-                            <span class="tag">Traffic Routing</span>
-                            <span class="tag">pfSense Gateway</span>
-                        </div>
-                    </div>
-                    <div class="skill-box">
-                        <h4><i class="fas fa-cogs"></i> Observability & Automation</h4>
-                        <div class="tags-grid">
-                            <span class="tag">ELK Stack Dashboards</span>
-                            <span class="tag">Bash Shell Scripting</span>
-                            <span class="tag">Cron Automation</span>
-                            <span class="tag">Hardware Troubleshooting</span>
-                            <span class="tag">Patch Management</span>
-                        </div>
+                </div>
+
+                <div class="skill-box">
+                    <h4><i class="fas fa-code"></i> Secure Dev & Frameworks</h4>
+                    <div class="tags-grid">
+                        <span class="tag">Python & Bash Scripting</span>
+                        <span class="tag">Django & REST APIs</span>
+                        <span class="tag">Secure Authentication</span>
+                        <span class="tag">MITRE ATT&CK & NIST CSF</span>
+                        <span class="tag">OWASP Top 10</span>
                     </div>
                 </div>
             </div>
@@ -571,15 +509,6 @@
     </main>
 
     <script>
-        // --- Tab Switching Logic ---
-        function switchTab(tabId) {
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-            
-            document.getElementById('btn-' + tabId).classList.add('active');
-            document.getElementById(tabId).classList.add('active');
-        }
-
         // --- Sidebar Navigation Active State ---
         function setActive(element) {
             document.querySelectorAll('.sidebar-nav a').forEach(link => link.classList.remove('active'));
