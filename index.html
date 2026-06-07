@@ -344,6 +344,7 @@
                 <li><a href="#skills" onclick="setActive(this)"><i class="fas fa-laptop-code"></i> Tech Skills</a></li>
                 <li><a href="#experience" onclick="setActive(this)"><i class="fas fa-briefcase"></i> Experience</a></li>
                 <li><a href="#projects" onclick="setActive(this)"><i class="fas fa-project-diagram"></i> Projects</a></li>
+                <li><a href="#certifications" onclick="setActive(this)"><i class="fas fa-certificate"></i> Certifications</a></li>
                 <li><a href="#education" onclick="setActive(this)"><i class="fas fa-graduation-cap"></i> Education</a></li>
             </ul>
         </nav>
@@ -362,7 +363,7 @@
             <h1 class="main-title" style="margin-bottom: 0.4rem; letter-spacing: -0.5px;">Anugrah Kizhakke Veedu</h1>
             
             <p style="color: var(--text-secondary); font-size: 1.1rem; font-weight: 500; margin-bottom: 1.5rem; margin-top: 0;">
-                <span style="color: var(--accent-color); font-weight: 600;">MSc Cyber Security Graduate</span> | IT Systems & Security
+                <span style="color: var(--accent-color); font-weight: 600;">MSc Cyber Security Graduate</span> | SOC Analyst & Security Engineer
             </p>
             
             <div class="social-links" style="justify-content: center; margin-bottom: 1.8rem; margin-top: 0;">
@@ -375,18 +376,18 @@
             </div>
 
             <div class="action-buttons" style="justify-content: center;">
-                <a href="Anugrah Kizhakke Veedu.pdf" download class="btn btn-primary" style="padding: 0.8rem 1.6rem; font-size: 0.95rem;">
-                    <i class="fas fa-file-download"></i> Download my CV
+                <a href="AnugrahCV.pdf" download class="btn btn-primary" style="padding: 0.8rem 1.6rem; font-size: 0.95rem;">
+                    <i class="fas fa-file-download"></i> Download CV
                 </a>
             </div>
         </div>
 
         <div class="card" id="summary">
             <h2 class="section-title"><i class="fas fa-user-shield"></i> Professional Summary</h2>
-            <p style="color: var(--text-secondary);">Detail-oriented IT professional and MSc Cyber Security graduate with hands-on experience in network defense, Linux server administration, and secure application development. Proven track record of deploying highly available Ubuntu Server environments, optimizing network traffic via pfSense firewalls, and engineering centralized observability pipelines using the ELK Stack. Adept at conducting comprehensive threat analysis mapped to the MITRE ATT&CK framework and executing incident response protocols. Dedicated to safeguarding critical infrastructure against evolving vulnerabilities while maintaining optimal system reliability.</p>
+            <p style="color: var(--text-secondary);">Detail-oriented SOC Analyst and MSc Cyber Security graduate specializing in turning noisy environments into monitored, hardened, and audit-ready systems. Fortinet-certified (FCA, FCF) with hands-on expertise in deploying full IDS pipelines (pfSense, Suricata, ELK Stack) and executing threat analysis mapped to the MITRE ATT&CK framework. Backed by practical Linux administration skills and a proactive approach to mitigating OWASP Top 10 vulnerabilities, I am dedicated to safeguarding critical infrastructure and driving rapid incident response.</p>
         </div>
 
-<div class="card" id="skills">
+        <div class="card" id="skills">
             <h2 class="section-title"><i class="fas fa-laptop-code"></i> Technical Skills</h2>
             
             <div class="skills-category-grid">
@@ -404,8 +405,8 @@
                 <div class="skill-box">
                     <h4><i class="fas fa-sitemap"></i> Security Architecture</h4>
                     <div class="tags-grid">
-                        <span class="tag">Snort IDS</span>
-                        <span class="tag">pfSense Firewalls</span>
+                        <span class="tag">Suricata IDS</span>
+                        <span class="tag">pfSense & FortiGate</span>
                         <span class="tag">SIEM (ELK Stack, Splunk)</span>
                         <span class="tag">Network Segmentation</span>
                         <span class="tag">TCP/IP & DNS/DHCP</span>
@@ -440,17 +441,14 @@
             <h2 class="section-title"><i class="fas fa-briefcase"></i> Professional Experience</h2>
             
             <div class="experience-item">
-                <h3 class="job-title">IT & Application Support / Web Application Development Intern</h3>
-                <div class="meta-info"><i class="fas fa-map-marker-alt"></i> Btrac Solutions | Kerala, India &nbsp;&bull;&nbsp; <i class="far fa-calendar-alt"></i> Sept 2022 – Mar 2023</div>
+                <h3 class="job-title">Web Application Development Intern (Secure Coding Focus)</h3>
+                <div class="meta-info"><i class="fas fa-map-marker-alt"></i> Btrac Solutions | Kerala, India &nbsp;&bull;&nbsp; <i class="far fa-calendar-alt"></i> July 2022 – Mar 2023</div>
                 <ul class="custom-list">
-                    <li>Supervised the day-to-day operations, log consistency, and system patch levels across internal evaluation servers and client-facing production hosting nodes.</li>
+                    <li>Supervised the day-to-day operations, log consistency, and system patch levels across internal evaluation servers and 3 isolated client-facing production hosting nodes.</li>
                     <li>Developed and maintained critical, secure web components utilizing Python and the Django framework to scale secure application architecture.</li>
                     <li>Championed secure coding initiatives by conducting routine code reviews, proactively identifying and mitigating OWASP Top 10 vulnerabilities prior to production release cycles.</li>
-                    <li>Coordinated directly with software teams to deploy environment updates, update firewall configuration rules, and install system security updates under tight SLA constraints.</li>
-                    <li>Implemented object-relational mapping (ORM) database integrations and secure cryptographic authentication protocols to safeguard sensitive user data integrity.</li>
-                    <li>Monitored core server performance indicators, troubleshooting database connection faults and kernel resource conflicts to optimize system availability metrics.</li>
-                    <li>Documented infrastructure deployment workflows, network architecture maps, and asset inventories to drastically cut down internal team transition friction.</li>
-                    <li>Collaborated closely with engineering squads to securely deploy patches across staging environments, tracking performance optimizations that reduced page response latencies.</li>
+                    <li>Implemented Object-Relational Mapping (ORM) database integrations and safe authentication protocols to safeguard sensitive data integrity for 1,000+ relational records.</li>
+                    <li>Collaborated directly with software teams to deploy environment updates and install system security patches, tracking performance optimizations that reduced page load latencies by 15%.</li>
                 </ul>
             </div>
         </div>
@@ -459,25 +457,56 @@
             <h2 class="section-title"><i class="fas fa-project-diagram"></i> Key Projects</h2>
             
             <div class="experience-item">
-                <h3 class="job-title">Intrusion Detection & Enterprise Network Monitoring System</h3>
-                <div class="meta-info">Ubuntu Server, pfSense Firewall, Snort IDS, ELK Stack &nbsp;&bull;&nbsp; 2024</div>
+                <h3 class="job-title">Intrusion Detection & Threat Monitoring System (IDS)</h3>
+                <div class="meta-info">Cybersecurity Graduate Researcher (Master's Project) | Teesside University &nbsp;&bull;&nbsp; 2024</div>
                 <ul class="custom-list">
-                    <li>Deployed and administered enterprise Ubuntu Server instances to orchestrate centralized configuration management and internal network utilities.</li>
-                    <li>Configured a pfSense firewall interface and integrated Snort IDS to establish real-time threat detection, manage access control lists (ACLs), and automate network defense policies.</li>
-                    <li>Engineered and fine-tuned 15+ custom detection rules, reducing false-positive alerts by 20% while expanding defensive visibility against critical CVEs mapped to MITRE ATT&CK vectors.</li>
-                    <li>Deployed the ELK Stack to aggregate high-volume syslog data, construct interactive Kibana security dashboards, and generate actionable threat intelligence documentation.</li>
-                    <li>Executed 4 distinct simulated network attack vectors (including DoS, Brute Force, and Port Scanning) to validate system resilience, packet capture (PCAP) accuracy, and response speed.</li>
+                    <li>Designed and deployed an integrated Intrusion Detection System (IDS) to actively monitor, detect, and isolate unauthorized network traffic anomalies across 10,000+ daily data streams.</li>
+                    <li>Configured a pfSense firewall interface and integrated Suricata IDS to establish real-time threat detection, engineering 15+ custom rules that reduced false-positive alerts by 20%.</li>
+                    <li>Deployed the ELK Stack to aggregate high-volume syslog data, constructing interactive Kibana security dashboards that reduced issue resolution time by 30%.</li>
+                    <li>Transformed raw, noisy system data into a clean, monitored baseline to ensure infrastructure resilience and high availability.</li>
                 </ul>
             </div>
 
             <div class="experience-item">
                 <h3 class="job-title">TrippyGo Secure Full-Stack Web Application</h3>
-                <div class="meta-info">Python, Django, HTML, CSS, SQLite, Linux Architecture &nbsp;&bull;&nbsp; 2023</div>
+                <div class="meta-info">Python, Django, HTML, CSS, SQLite &nbsp;&bull;&nbsp; 2023</div>
                 <ul class="custom-list">
-                    <li>Developed a full-stack travel management web application from scratch, prioritizing modern data protection standards, input sanitization, and secure user interactions.</li>
-                    <li>Implemented robust user authentication workflows, cryptographic session management, and strict form field validation to systematically eliminate SQL injection (SQLi) and XSS vulnerabilities.</li>
-                    <li>Provisioned and maintained the underlying operating system environment and production host resources for a high-availability travel application framework.</li>
-                    <li>Initialized and managed completely isolated staging and production sandbox environments, developing scheduled maintenance scripts to eliminate deployment downtime.</li>
+                    <li>Developed a full-stack travel management web application from scratch, prioritizing modern data protection standards to safely process 500+ simulated user query interactions.</li>
+                    <li>Implemented robust user authentication workflows, cryptographic session management, and strict form validation to systematically eliminate 100% of SQL Injection (SQLi) and Cross-Site Scripting (XSS) vulnerabilities.</li>
+                    <li>Applied MVC architecture principles and developed scheduled maintenance scripts to guarantee secure database handling with zero deployment downtime in simulated production environments.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card" id="certifications">
+            <h2 class="section-title"><i class="fas fa-certificate"></i> Certifications & Training</h2>
+            
+            <div class="experience-item" style="margin-bottom: 1.5rem; padding-bottom: 1.5rem;">
+                <h3 class="job-title">Fortinet Certified Associate (FCA) in Cybersecurity</h3>
+                <div class="meta-info">Fortinet &nbsp;&bull;&nbsp; June 2026</div>
+                <ul class="custom-list">
+                    <li>Validation ID: 9668149803AK</li>
+                </ul>
+            </div>
+
+            <div class="experience-item" style="margin-bottom: 1.5rem; padding-bottom: 1.5rem;">
+                <h3 class="job-title">Fortinet Certified Fundamentals (FCF) in Cybersecurity</h3>
+                <div class="meta-info">Fortinet &nbsp;&bull;&nbsp; June 2026</div>
+                <ul class="custom-list">
+                    <li>Validation ID: 7103587775AK</li>
+                </ul>
+            </div>
+
+            <div class="experience-item" style="margin-bottom: 1.5rem; padding-bottom: 1.5rem;">
+                <h3 class="job-title">Linux Fundamentals</h3>
+                <div class="meta-info">Hack The Box Academy &nbsp;&bull;&nbsp; June 2026</div>
+            </div>
+
+            <div class="experience-item" style="border: none; margin-bottom: 0; padding-bottom: 0;">
+                <h3 class="job-title">In Progress</h3>
+                <ul class="custom-list">
+                    <li>Certified Ethical Hacker (CEH) - Expected July 2026</li>
+                    <li>Certified IT Infrastructure & Cyber SOC Analyst (CICSA) - Expected July 2026</li>
                 </ul>
             </div>
         </div>
