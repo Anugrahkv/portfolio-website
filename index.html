@@ -360,7 +360,10 @@
 
         <div class="card" id="home" style="display: flex; flex-direction: column; align-items: center; text-align: center; padding-top: 2.5rem; padding-bottom: 2.5rem;">
             
-            <h1 class="main-title" style="margin-bottom: 0.4rem; letter-spacing: -0.5px;">Anugrah Kizhakke Veedu</h1>
+            <h1 class="main-title" style="margin-bottom: 0.2rem; letter-spacing: -0.5px;">Anugrah Kizhakke Veedu</h1>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 0.8rem;">
+                <i class="fas fa-map-marker-alt" style="color: var(--accent-color);"></i> Manama, Bahrain
+            </p>
             
          <p style="color: var(--text-secondary); font-size: 1.1rem; font-weight: 500; margin-bottom: 1.5rem; margin-top: 0;">
              <span style="color: var(--accent-color); font-weight: 600;">SOC Analyst & Security Engineer</span> | MSc Cyber Security Graduate
@@ -384,7 +387,7 @@
 
         <div class="card" id="summary">
             <h2 class="section-title"><i class="fas fa-user-shield"></i> Professional Summary</h2>
-            <p style="color: var(--text-secondary);">Detail-oriented Cybersecurity professional with an MSc in Cyber Security and hands-on experience turning noisy environments into monitored, hardened, and audit-ready systems. Proven ability to build proactive defenses and architect enterprise-grade security infrastructure. Proficient in deploying full IDS pipelines (pfSense, Suricata, ELK Stack), executing threat analysis mapped to the MITRE ATT&CK framework, and securing full-stack applications against OWASP Top 10 vulnerabilities. Seeking a SOC Analyst or Cybersecurity Analyst role to leverage strong infrastructure hardening and incident response capabilities.</p>
+            <p style="color: var(--text-secondary);">Detail-oriented Cybersecurity professional with an MSc in Cyber Security and hands-on experience turning noisy environments into monitored, hardened, and audit-ready systems. Proven ability to build proactive defenses and architect enterprise-grade security infrastructure. Proficient in deploying full IDS pipelines (pfSense, Suricata, ELK Stack), executing threat analysis mapped to the MITRE ATT&CK framework, and developing automated SOC triage tools. Seeking a SOC Analyst or Cybersecurity Analyst role to leverage strong infrastructure hardening, Python automation, and incident response capabilities.</p>
         </div>
 
         <div class="card" id="skills">
@@ -429,6 +432,8 @@
                     <h4><i class="fas fa-code"></i> Secure Dev & AppSec</h4>
                     <div class="tags-grid">
                         <span class="tag">Python & Django</span>
+                        <span class="tag">REST API Integration</span>
+                        <span class="tag">JSON Parsing</span>
                         <span class="tag">C++ & Java</span>
                         <span class="tag">Secure Authentication Workflows</span>
                         <span class="tag">OWASP Top 10 Mitigation</span>
@@ -456,6 +461,17 @@
             <h2 class="section-title"><i class="fas fa-project-diagram"></i> Key Projects</h2>
             
             <div class="experience-item">
+                <h3 class="job-title">SOC Automation & Enrichment Dashboard</h3>
+                <div class="meta-info">Python, Django, REST APIs (VirusTotal v3, AbuseIPDB), JSON &nbsp;&bull;&nbsp; June 2026</div>
+                <ul class="custom-list">
+                    <li>Engineered a custom Tier 1 SOC triage dashboard utilizing Python and Django to automate the enrichment of Indicators of Compromise (IOCs) and reduce manual alert fatigue.</li>
+                    <li>Developed intelligent backend auto-routing logic and integrated RESTful APIs to extract and parse complex JSON threat intelligence for network reputation and multi-engine malware telemetry.</li>
+                    <li>Implemented strict environmental isolation and <code>.env</code> secret management to ensure API credentials remained securely excluded from version control.</li>
+                    <li>Conducted rigorous True Positive and True Negative validation simulations against live malware hashes (e.g., WannaCry) and active scanner IPs to verify engine accuracy.</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
                 <h3 class="job-title">Intrusion Detection & Threat Monitoring System (IDS)</h3>
                 <div class="meta-info">Cybersecurity Graduate Researcher (Master's Project) | Teesside University &nbsp;&bull;&nbsp; Sept 2023 - Sept 2024</div>
                 <ul class="custom-list">
@@ -470,8 +486,7 @@
                 <h3 class="job-title">TrippyGo – Secure Full-Stack Web Application</h3>
                 <div class="meta-info">Python, Django, HTML, CSS, SQLite &nbsp;&bull;&nbsp; 2023</div>
                 <ul class="custom-list">
-                    <li>Engineered a full-stack application with a security-first approach, performing rigorous threat modeling to identify attack vectors and implementing comprehensive controls to safeguard 500+ simulated user interactions.</li>
-                    <li>Implemented robust user authentication, cryptographic session management, and strict input validation to systematically eliminate 100% of SQL injection (SQLi) and XSS vulnerabilities.</li>
+                    <li>Engineered a full-stack application with a security-first approach, implementing robust cryptographic session management and strict input validation to systematically eliminate SQL injection and XSS vulnerabilities.</li>
                     <li>Applied MVC architecture principles and developed automated maintenance scripts to ensure secure database handling with zero deployment downtime in simulated production environments.</li>
                 </ul>
             </div>
