@@ -84,7 +84,7 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
-            z-index: 100;
+            z-index: 1000;
             box-shadow: 2px 0 15px rgba(0,0,0,0.03);
             transition: var(--transition);
         }
@@ -348,47 +348,82 @@
             100% { box-shadow: 0 0 0 0 rgba(46, 213, 115, 0); }
         }
 
-        /* --- RESPONSIVE DESIGN --- */
+        /* --- RESPONSIVE DESIGN (MOBILE PINNED NAV) --- */
         @media (max-width: 900px) {
             body { flex-direction: column; }
+            
+            /* Pin sidebar to top */
             .sidebar {
                 width: 100%;
-                height: auto;
-                position: relative;
+                height: 65px;
+                position: fixed;
+                top: 0;
+                left: 0;
                 border-right: none;
                 border-bottom: 1px solid var(--border-color);
+                box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+                z-index: 1000;
             }
             .sidebar-profile { display: none; }
-            .sidebar-nav { display: flex; flex-wrap: nowrap; overflow-x: auto; padding: 1rem; -webkit-overflow-scrolling: touch; }
-            .sidebar-nav a { padding: 0.5rem 1rem; border-left: none; border-bottom: 3px solid transparent; white-space: nowrap; }
-            .sidebar-nav a:hover, .sidebar-nav a.active { border-left-color: transparent; border-bottom-color: var(--accent-color); background-color: transparent; }
             
-            .main-content { margin-left: 0; width: 100%; padding: 1.5rem; }
+            /* Horizontal swipable nav */
+            .sidebar-nav { 
+                overflow-x: auto; 
+                padding: 0; 
+                height: 100%; 
+                display: flex; 
+                align-items: center; 
+                -webkit-overflow-scrolling: touch; 
+            }
+            .sidebar-nav ul { 
+                display: flex; 
+                flex-wrap: nowrap; 
+                margin: 0; 
+                padding: 0 1rem; 
+                height: 100%; 
+                align-items: center; 
+            }
+            .sidebar-nav li { margin-bottom: 0; height: 100%; display: flex; align-items: center; }
+            
+            .sidebar-nav a { 
+                padding: 0 1rem; 
+                height: 100%; 
+                border-left: none; 
+                border-bottom: 3px solid transparent; 
+                white-space: nowrap; 
+                display: flex; 
+                align-items: center; 
+            }
+            .sidebar-nav a:hover, .sidebar-nav a.active { 
+                border-left-color: transparent; 
+                border-bottom-color: var(--accent-color); 
+                background-color: transparent; 
+            }
+            
+            /* Push content below pinned nav */
+            .main-content { margin-left: 0; width: 100%; padding: 1.5rem; margin-top: 65px; }
             h1.main-title { font-size: 2rem; }
+            
+            /* Floating Action Button (FAB) for Theme Toggle */
+            .theme-toggle-wrapper {
+                position: fixed;
+                top: auto;
+                bottom: 1.5rem;
+                right: 1.5rem;
+                margin-bottom: 0;
+                z-index: 1001;
+            }
+            .theme-btn { box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+            
+            /* Offset scroll anchors so content isn't hidden under pinned nav */
+            .card { scroll-margin-top: 85px; }
         }
 
-        /* --- RESPONSIVE DESIGN --- */
-        @media (max-width: 900px) {
-            body { flex-direction: column; }
-            .sidebar {
-                width: 100%;
-                height: auto;
-                position: relative;
-                border-right: none;
-                border-bottom: 1px solid var(--border-color);
-            }
-            .sidebar-profile { display: none; }
-            
-            /* --- FIX: Target the ul directly for flex layout --- */
-            .sidebar-nav { overflow-x: auto; padding: 0; -webkit-overflow-scrolling: touch; }
-            .sidebar-nav ul { display: flex; flex-wrap: nowrap; margin: 0; padding: 0.5rem 1rem; }
-            .sidebar-nav li { margin-bottom: 0; }
-            
-            .sidebar-nav a { padding: 0.5rem 1rem; border-left: none; border-bottom: 3px solid transparent; white-space: nowrap; }
-            .sidebar-nav a:hover, .sidebar-nav a.active { border-left-color: transparent; border-bottom-color: var(--accent-color); background-color: transparent; }
-            
-            .main-content { margin-left: 0; width: 100%; padding: 1.5rem; }
-            h1.main-title { font-size: 2rem; }
+        @media (max-width: 600px) {
+            .card { padding: 1.5rem; }
+            .btn { width: 100%; }
+            .btn-sm { width: auto; flex-grow: 1; }
+            .info-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
