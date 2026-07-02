@@ -367,12 +367,28 @@
             h1.main-title { font-size: 2rem; }
         }
 
-        @media (max-width: 600px) {
-            .card { padding: 1.5rem; }
-            .btn { width: 100%; }
-            .btn-sm { width: auto; flex-grow: 1; }
-            .info-grid { grid-template-columns: 1fr; }
-            .theme-toggle-wrapper { top: 0.5rem; right: 0.5rem; }
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 900px) {
+            body { flex-direction: column; }
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+            }
+            .sidebar-profile { display: none; }
+            
+            /* --- FIX: Target the ul directly for flex layout --- */
+            .sidebar-nav { overflow-x: auto; padding: 0; -webkit-overflow-scrolling: touch; }
+            .sidebar-nav ul { display: flex; flex-wrap: nowrap; margin: 0; padding: 0.5rem 1rem; }
+            .sidebar-nav li { margin-bottom: 0; }
+            
+            .sidebar-nav a { padding: 0.5rem 1rem; border-left: none; border-bottom: 3px solid transparent; white-space: nowrap; }
+            .sidebar-nav a:hover, .sidebar-nav a.active { border-left-color: transparent; border-bottom-color: var(--accent-color); background-color: transparent; }
+            
+            .main-content { margin-left: 0; width: 100%; padding: 1.5rem; }
+            h1.main-title { font-size: 2rem; }
         }
     </style>
 </head>
