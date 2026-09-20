@@ -567,23 +567,27 @@
     <nav>
         <div class="container nav-content">
             <div class="logo">
-                Anugrah Kizhakke Veedu<span style="color: var(--accent);">.</span>
+                Anugrah K. V.<span style="color: var(--accent);">.</span>
             </div>
             
-            <div class="nav-links">
-                <a href="#home">Home</a>
-                <a href="#skills">Skills</a>
-                <a href="#experience">Experience</a>
-                <a href="#projects">Projects</a>
-                <a href="#certifications">Certifications</a>
-                <a href="#education">Education</a>
+            <div class="nav-links" id="nav-menu">
+                <a href="#home" onclick="toggleMenu()">Home</a>
+                <a href="#skills" onclick="toggleMenu()">Skills</a>
+                <a href="#experience" onclick="toggleMenu()">Experience</a>
+                <a href="#projects" onclick="toggleMenu()">Projects</a>
+                <a href="#certifications" onclick="toggleMenu()">Certifications</a>
+                <a href="#education" onclick="toggleMenu()">Education</a>
+                <a href="#contact" class="btn btn-primary mobile-contact" onclick="toggleMenu()">Contact</a>
             </div>
 
             <div class="nav-actions">
-                <button class="theme-btn" onclick="toggleTheme()" id="theme-icon" aria-label="Toggle Dark/Light Mode">
-                    <i class="fas fa-moon"></i>
+                <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle Dark/Light Mode">
+                    <i class="fas fa-moon" id="theme-icon-inner"></i>
                 </button>
-                <a href="#contact" class="btn btn-primary">Contact</a>
+                <a href="#contact" class="btn btn-primary desktop-contact">Contact</a>
+                <button class="mobile-toggle" onclick="toggleMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
         </div>
     </nav>
