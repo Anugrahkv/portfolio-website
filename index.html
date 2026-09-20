@@ -103,11 +103,18 @@ code{
     text-align:center;
     border-bottom:1px solid var(--line);
 }
-.sidebar-profile img{
-    width:112px;height:112px;border-radius:50%;object-fit:cover;
-    border:2px solid var(--accent);
-    padding:4px;
-    box-shadow:0 0 0 8px rgba(34,211,238,.06),0 0 35px rgba(34,211,238,.16);
+.sidebar-profile img {
+    width: 140px;          /* Increased size for better visibility */
+    height: 140px;         /* Increased size for better visibility */
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top center; /* Focuses on the face/top of the image */
+    border: 3px solid var(--accent);
+    padding: 4px;
+    background-color: var(--surface-3);
+    box-shadow: 0 0 0 8px rgba(34, 211, 238, 0.06), 0 0 35px rgba(34, 211, 238, 0.16);
+    display: block;        /* Ensures it behaves as a block element */
+    margin: 0 auto;        /* Perfectly centers it horizontally */
 }
 .sidebar-profile p:last-child{
     font-family:'JetBrains Mono',monospace!important;
