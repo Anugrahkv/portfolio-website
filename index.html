@@ -4,774 +4,1008 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anugrah Kizhakke Veedu | Cybersecurity Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+        :root {
+            --bg: #060b14;
+            --bg-soft: #0a1220;
+            --surface: rgba(12, 22, 38, 0.82);
+            --surface-2: #0d192a;
+            --surface-3: #111f33;
+            --text: #e8f0f8;
+            --muted: #91a4b8;
+            --line: rgba(148, 163, 184, 0.14);
+            --accent: #22d3ee; /* Cyan */
+            --accent-2: #60a5fa; /* Blue */
+            --green: #34d399;
+            --danger: #fb7185;
+            --shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
+            --glow: 0 0 35px rgba(34, 211, 238, 0.12);
+            --font-main: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
-:root{
-    --bg:#060b14;
-    --bg-soft:#0a1220;
-    --surface:rgba(12,22,38,.82);
-    --surface-2:#0d192a;
-    --surface-3:#111f33;
-    --text:#e8f0f8;
-    --muted:#91a4b8;
-    --line:rgba(148,163,184,.14);
-    --accent:#22d3ee;
-    --accent-2:#60a5fa;
-    --green:#34d399;
-    --danger:#fb7185;
-    --shadow:0 24px 70px rgba(0,0,0,.34);
-    --glow:0 0 35px rgba(34,211,238,.12);
-    --sidebar-width:285px;
-    --radius:22px;
-    --transition:all .28s cubic-bezier(.2,.8,.2,1);
-}
+        [data-theme="light"] {
+            --bg: #f4f8fb;
+            --bg-soft: #eaf1f7;
+            --surface: rgba(255, 255, 255, 0.9);
+            --surface-2: #f8fbfd;
+            --surface-3: #eef5f9;
+            --text: #102033;
+            --muted: #5e7082;
+            --line: rgba(15, 23, 42, 0.10);
+            --accent: #0891b2;
+            --accent-2: #2563eb;
+            --green: #059669;
+            --danger: #e11d48;
+            --shadow: 0 20px 55px rgba(15, 23, 42, 0.09);
+            --glow: 0 0 30px rgba(8, 145, 178, 0.10);
+        }
 
-[data-theme="light"]{
-    --bg:#f4f8fb;
-    --bg-soft:#eaf1f7;
-    --surface:rgba(255,255,255,.9);
-    --surface-2:#f8fbfd;
-    --surface-3:#eef5f9;
-    --text:#102033;
-    --muted:#5e7082;
-    --line:rgba(15,23,42,.10);
-    --accent:#0891b2;
-    --accent-2:#2563eb;
-    --green:#059669;
-    --danger:#e11d48;
-    --shadow:0 20px 55px rgba(15,23,42,.09);
-    --glow:0 0 30px rgba(8,145,178,.10);
-}
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 10%, rgba(34, 211, 238, 0.07), transparent 28%),
+                radial-gradient(circle at 90% 25%, rgba(96, 165, 250, 0.06), transparent 30%);
+            transition: var(--transition);
+        }
 
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
-    font-family:'Inter',sans-serif;
-    background:
-      radial-gradient(circle at 15% 10%,rgba(34,211,238,.07),transparent 28%),
-      radial-gradient(circle at 90% 25%,rgba(96,165,250,.06),transparent 30%),
-      var(--bg);
-    color:var(--text);
-    line-height:1.7;
-    min-height:100vh;
-    overflow-x:hidden;
-    transition:var(--transition);
-}
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    opacity:.035;
-    background-image:
-      linear-gradient(rgba(255,255,255,.7) 1px,transparent 1px),
-      linear-gradient(90deg,rgba(255,255,255,.7) 1px,transparent 1px);
-    background-size:48px 48px;
-    mask-image:linear-gradient(to bottom,black,transparent 75%);
-}
-a{text-decoration:none;color:inherit}
-ul{list-style:none}
-code{
-    font-family:'JetBrains Mono',monospace;
-    color:var(--accent);
-    background:var(--surface-3);
-    border:1px solid var(--line);
-    padding:.2rem .45rem;
-    border-radius:7px;
-}
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0.035;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.7) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.7) 1px, transparent 1px);
+            background-size: 48px 48px;
+            mask-image: linear-gradient(to bottom, black, transparent 75%);
+        }
 
-.sidebar{
-    width:var(--sidebar-width);
-    background:rgba(7,15,27,.78);
-    backdrop-filter:blur(18px);
-    -webkit-backdrop-filter:blur(18px);
-    border-right:1px solid var(--line);
-    position:fixed;
-    inset:0 auto 0 0;
-    z-index:1000;
-    display:flex;
-    flex-direction:column;
-    box-shadow:20px 0 70px rgba(0,0,0,.18);
-}
-[data-theme="light"] .sidebar{background:rgba(255,255,255,.84)}
-.sidebar-profile{
-    padding:2.2rem 1.4rem 1.5rem;
-    text-align:center;
-    border-bottom:1px solid var(--line);
-}
-.sidebar-profile img {
-    width: 140px;          /* Increased size for better visibility */
-    height: 140px;         /* Increased size for better visibility */
-    border-radius: 50%;
-    object-fit: cover;
-    object-position: top center; /* Focuses on the face/top of the image */
-    border: 3px solid var(--accent);
-    padding: 4px;
-    background-color: var(--surface-3);
-    box-shadow: 0 0 0 8px rgba(34, 211, 238, 0.06), 0 0 35px rgba(34, 211, 238, 0.16);
-    display: block;        /* Ensures it behaves as a block element */
-    margin: 0 auto;        /* Perfectly centers it horizontally */
-}
-.sidebar-profile p:last-child{
-    font-family:'JetBrains Mono',monospace!important;
-    letter-spacing:1.5px!important;
-}
-.sidebar-nav{flex:1;padding:1.3rem .9rem;overflow-y:auto}
-.sidebar-nav li{margin:.18rem 0}
-.sidebar-nav a{
-    display:flex;align-items:center;gap:.9rem;
-    padding:.82rem 1rem;
-    border:1px solid transparent;
-    border-radius:12px;
-    color:var(--muted);
-    font-size:.88rem;font-weight:600;
-    transition:var(--transition);
-}
-.sidebar-nav a i{width:20px;text-align:center;color:#6f8499;transition:var(--transition)}
-.sidebar-nav a:hover,.sidebar-nav a.active{
-    color:var(--text);
-    border-color:rgba(34,211,238,.18);
-    background:linear-gradient(90deg,rgba(34,211,238,.11),rgba(96,165,250,.05));
-    box-shadow:inset 3px 0 0 var(--accent);
-}
-.sidebar-nav a:hover i,.sidebar-nav a.active i{color:var(--accent)}
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
 
-.main-content{
-    margin-left:var(--sidebar-width);
-    width:calc(100% - var(--sidebar-width));
-    max-width:1400px;
-    padding:1.5rem 3.5rem 4rem;
-}
-.theme-toggle-wrapper{
-    display:flex;justify-content:flex-end;
-    position:sticky;top:1rem;z-index:20;
-    margin-bottom:1rem;
-}
-.theme-btn{
-    width:44px;height:44px;border-radius:13px;
-    border:1px solid var(--line);
-    background:var(--surface);
-    color:var(--text);cursor:pointer;
-    backdrop-filter:blur(12px);
-    box-shadow:var(--shadow);
-    transition:var(--transition);
-}
-.theme-btn:hover{transform:translateY(-2px);border-color:var(--accent);color:var(--accent)}
+        /* Typography & Utilities */
+        .gradient-text {
+            background: linear-gradient(100deg, var(--text) 25%, var(--accent) 75%, var(--accent-2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
 
-.card{
-    position:relative;
-    overflow:hidden;
-    background:linear-gradient(145deg,rgba(14,27,46,.88),rgba(8,17,30,.84));
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:2.5rem;
-    margin-bottom:1.5rem;
-    box-shadow:var(--shadow);
-    scroll-margin-top:2rem;
-    transition:var(--transition);
-}
-[data-theme="light"] .card{
-    background:linear-gradient(145deg,rgba(255,255,255,.95),rgba(247,251,253,.92));
-}
-.card::after{
-    content:"";
-    position:absolute;top:0;left:0;right:0;height:1px;
-    background:linear-gradient(90deg,transparent,var(--accent),transparent);
-    opacity:.45;
-}
-.card:hover{border-color:rgba(34,211,238,.20)}
-#home{
-    min-height:440px;
-    justify-content:center;
-    background:
-      radial-gradient(circle at 50% 30%,rgba(34,211,238,.10),transparent 35%),
-      linear-gradient(145deg,rgba(14,27,46,.94),rgba(8,17,30,.92));
-}
-[data-theme="light"] #home{
-    background:radial-gradient(circle at 50% 30%,rgba(8,145,178,.08),transparent 35%),var(--surface);
-}
-#home::before{
-    content:"SOC • THREAT DETECTION • INCIDENT RESPONSE";
-    position:absolute;top:1.5rem;left:50%;transform:translateX(-50%);
-    font:600 .65rem 'JetBrains Mono',monospace;
-    letter-spacing:2px;color:var(--accent);opacity:.75;
-    white-space:nowrap;
-}
-h1.main-title{
-    font-size:clamp(2.4rem,5vw,4.5rem);
-    font-weight:800;
-    letter-spacing:-.055em;
-    line-height:1.05;
-    margin-bottom:.8rem;
-    background:linear-gradient(100deg,var(--text) 25%,var(--accent) 75%,var(--accent-2));
-    -webkit-background-clip:text;background-clip:text;color:transparent;
-}
-h2.section-title{
-    font-size:1.35rem;
-    letter-spacing:-.02em;
-    margin-bottom:1.7rem;
-    display:flex;align-items:center;gap:.75rem;
-    padding-bottom:.9rem;
-    border-bottom:1px solid var(--line);
-}
-h2.section-title i{color:var(--accent)}
-h3.job-title{font-size:1.12rem;font-weight:700;margin-bottom:.35rem}
-h4.inner-title{font-size:1rem}
-.meta-info{
-    color:var(--muted);font-size:.78rem;font-weight:500;
-    display:flex;flex-wrap:wrap;align-items:center;gap:8px;
-    margin-bottom:1rem;
-}
-.highlight-text{color:var(--accent);font-weight:700}
-.custom-list li{
-    position:relative;padding-left:1.35rem;margin-bottom:.65rem;
-    color:var(--muted);font-size:.92rem;
-}
-.custom-list li::before{
-    content:"▹";position:absolute;left:0;color:var(--accent);
-    font-family:'JetBrains Mono',monospace;font-weight:700;
-}
-.custom-list strong{color:var(--text)}
-.social-links{display:flex;gap:.65rem;flex-wrap:wrap;justify-content:center;margin:1.2rem 0 1.6rem}
-.social-icon{
-    width:44px;height:44px;border-radius:12px;
-    display:flex;align-items:center;justify-content:center;
-    background:var(--surface-3);border:1px solid var(--line);
-    color:var(--muted);transition:var(--transition);
-}
-.social-icon:hover{transform:translateY(-4px);color:#fff}
-.social-icon.whatsapp:hover{background:#25D366;border-color:#25D366}
-.social-icon.linkedin:hover{background:#0A66C2;border-color:#0A66C2}
-.social-icon.github:hover{background:#24292f;border-color:#24292f}
-.social-icon.email:hover{background:var(--accent);border-color:var(--accent)}
+        .section-title {
+            font-size: 2rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .section-title::after {
+            content: "";
+            height: 1px;
+            flex-grow: 1;
+            background: linear-gradient(90deg, var(--line), transparent);
+        }
 
-.btn{
-    padding:.78rem 1.2rem;border-radius:11px;
-    font-size:.83rem;font-weight:700;
-    display:inline-flex;align-items:center;justify-content:center;gap:.55rem;
-    cursor:pointer;transition:var(--transition);
-    border:1px solid transparent;
-}
-.btn-primary{
-    color:#021017;
-    background:linear-gradient(135deg,var(--accent),#67e8f9);
-    box-shadow:0 10px 30px rgba(34,211,238,.16);
-}
-.btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 35px rgba(34,211,238,.24);color:#021017}
-.btn-outline{background:transparent;color:var(--accent);border-color:rgba(34,211,238,.34)}
-.btn-outline:hover{background:rgba(34,211,238,.10);border-color:var(--accent);transform:translateY(-2px)}
-.btn-sm{padding:.55rem .85rem;font-size:.75rem}
-.project-actions{margin-top:1.15rem;display:flex;gap:.65rem;flex-wrap:wrap}
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
 
-.skills-category-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
-.skill-box{
-    background:linear-gradient(145deg,var(--surface-3),rgba(8,18,31,.55));
-    border:1px solid var(--line);
-    padding:1.25rem;border-radius:16px;
-    transition:var(--transition);
-}
-[data-theme="light"] .skill-box{background:var(--surface-3)}
-.skill-box:hover{transform:translateY(-3px);border-color:rgba(34,211,238,.35);box-shadow:var(--glow)}
-.skill-box h4{margin-bottom:.9rem;font-size:.92rem;display:flex;align-items:center;gap:.55rem}
-.skill-box h4 i{color:var(--accent)}
-.tags-grid{display:flex;flex-wrap:wrap;gap:.45rem}
-.tag{
-    background:rgba(148,163,184,.06);
-    color:var(--muted);
-    padding:.36rem .62rem;border-radius:8px;
-    font:500 .72rem 'JetBrains Mono',monospace;
-    border:1px solid var(--line);
-    transition:var(--transition);
-}
-.tag:hover{color:var(--accent);border-color:rgba(34,211,238,.3);background:rgba(34,211,238,.06)}
+        section { padding: 5rem 0; scroll-margin-top: 5rem; }
 
-.experience-item{
-    position:relative;
-    margin-bottom:2.3rem;padding-bottom:2.3rem;
-    border-bottom:1px solid var(--line);
-}
-.experience-item:last-child{margin-bottom:0;padding-bottom:0;border-bottom:0}
-.experience-item::before{
-    content:"";
-    position:absolute;left:-2.5rem;top:.3rem;
-    width:3px;height:34px;border-radius:4px;
-    background:linear-gradient(var(--accent),transparent);
-    opacity:.7;
-}
-.verify-link{
-    font-size:.73rem;display:inline-flex;align-items:center;gap:.4rem;
-    padding:.38rem .65rem;background:var(--surface-3);
-    border-radius:8px;border:1px solid var(--line);
-    color:var(--muted);transition:var(--transition);
-}
-.verify-link:hover{color:var(--accent);border-color:var(--accent);background:rgba(34,211,238,.06)}
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background: var(--surface);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-bottom: 1px solid var(--line);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: var(--transition);
+        }
 
-#summary p{
-    max-width:1050px;
-    font-size:1rem!important;
-    line-height:1.9!important;
-    color:var(--muted)!important;
-}
-#summary p::before{
-    content:"// ";
-    color:var(--accent);
-    font-family:'JetBrains Mono',monospace;
-}
-@keyframes pulse-green{
-    0%{box-shadow:0 0 0 0 rgba(52,211,153,.55)}
-    70%{box-shadow:0 0 0 8px rgba(52,211,153,0)}
-    100%{box-shadow:0 0 0 0 rgba(52,211,153,0)}
-}
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-@media (max-width:1000px){
-    :root{--sidebar-width:245px}
-    .main-content{padding:1.4rem 2rem 3rem}
-}
-@media (max-width:900px){
-    body{display:block}
-    .sidebar{
-        width:100%;height:66px;inset:0 0 auto 0;
-        border-right:0;border-bottom:1px solid var(--line);
-        flex-direction:row;
-    }
-    .sidebar-profile{display:none}
-    .sidebar-nav{padding:0 .55rem;overflow-x:auto;overflow-y:hidden}
-    .sidebar-nav ul{display:flex;height:100%;width:max-content}
-    .sidebar-nav li{margin:0}
-    .sidebar-nav a{
-        height:100%;padding:0 .8rem;border-radius:0;
-        border:0;border-bottom:3px solid transparent;
-        white-space:nowrap;font-size:.72rem;
-    }
-    .sidebar-nav a:hover,.sidebar-nav a.active{
-        border:0;border-bottom:3px solid var(--accent);
-        background:transparent;box-shadow:none;
-    }
-    .main-content{
-        margin-left:0;width:100%;padding:1.2rem 1rem 3rem;margin-top:66px;
-    }
-    .theme-toggle-wrapper{position:fixed;right:1rem;bottom:1rem;top:auto;z-index:1001}
-    .theme-btn{box-shadow:0 12px 35px rgba(0,0,0,.3)}
-    .card{scroll-margin-top:84px}
-    .experience-item::before{display:none}
-}
-@media (max-width:650px){
-    .card{padding:1.35rem;border-radius:18px}
-    #home{min-height:410px;padding-top:4rem}
-    #home::before{font-size:.52rem;letter-spacing:1.2px}
-    .skills-category-grid{grid-template-columns:1fr}
-    h1.main-title{font-size:2.45rem}
-    .btn{width:100%}
-    .btn-sm{width:auto}
-}
-</style>
+        .logo { font-weight: 800; font-size: 1.15rem; letter-spacing: -0.5px; text-transform: uppercase; }
+
+        .nav-center {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        
+        .nav-links { display: flex; gap: 1.5rem; align-items: center; }
+        .nav-links a {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--muted);
+            transition: var(--transition);
+        }
+        .nav-links a:hover { color: var(--accent); }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .theme-btn {
+            width: 38px; height: 38px;
+            border-radius: 10px;
+            border: 1px solid var(--line);
+            background: var(--surface-3);
+            color: var(--text);
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: var(--transition);
+        }
+        .theme-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+        .btn {
+            padding: 0.6rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            color: #021017;
+            border: none;
+            box-shadow: 0 4px 15px rgba(34, 211, 238, 0.2);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(34, 211, 238, 0.3);
+            color: #021017;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--line);
+            color: var(--text);
+        }
+        .btn-outline:hover {
+            border-color: var(--accent);
+            background: rgba(34, 211, 238, 0.05);
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        #home {
+            padding-top: 9rem;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(52, 211, 153, 0.1);
+            color: var(--green);
+            border: 1px solid rgba(52, 211, 153, 0.2);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        .status-dot {
+            width: 8px; height: 8px;
+            background: var(--green);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .hero-title {
+            font-size: clamp(2.6rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.05rem;
+            color: var(--muted);
+            margin-bottom: 2rem;
+            font-weight: 400;
+            line-height: 1.8;
+            max-width: 95%;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .lang-pills {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .lang-pill {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--muted);
+            background: var(--surface-3);
+            border: 1px solid var(--line);
+            padding: 0.3rem 0.7rem;
+            border-radius: 6px;
+        }
+
+        .hero-img-wrapper {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .hero-img {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            object-fit: cover;
+            position: relative;
+            z-index: 2;
+            border: 4px solid var(--bg);
+            box-shadow: 0 0 0 8px rgba(34, 211, 238, 0.06), 0 0 35px rgba(34, 211, 238, 0.16);
+        }
+
+        .hero-img-backdrop {
+            position: absolute;
+            top: -5px; left: 50%;
+            transform: translateX(-50%);
+            width: 360px; height: 360px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            z-index: 1;
+            filter: blur(20px);
+            opacity: 0.3;
+        }
+
+        /* Timeline (Experience & Education) */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 2px;
+            background: var(--line);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            background: var(--surface);
+            border: 1px solid var(--line);
+            padding: 2rem;
+            border-radius: 16px;
+            transition: var(--transition);
+        }
+        .timeline-item:hover {
+            border-color: var(--accent);
+            box-shadow: var(--shadow);
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.35rem; top: 2.5rem;
+            width: 14px; height: 14px;
+            border-radius: 50%;
+            background: var(--bg);
+            border: 2px solid var(--accent);
+            z-index: 2;
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .timeline-title h3 { font-size: 1.25rem; font-weight: 700; color: var(--text); }
+        .timeline-title h4 { font-size: 1rem; color: var(--accent); font-weight: 500; margin-top: 0.2rem; }
+        .timeline-date {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--muted);
+            background: var(--surface-3);
+            border: 1px solid var(--line);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+        }
+
+        .bullet-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+        .bullet-list li {
+            position: relative;
+            padding-left: 1.2rem;
+            margin-bottom: 0.6rem;
+            color: var(--muted);
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+        .bullet-list li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+            font-family: var(--font-mono);
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 2rem;
+            position: relative;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: var(--shadow);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+        .project-title { font-size: 1.25rem; font-weight: 700; color: var(--text); }
+        .project-meta { font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent); margin-top: 0.3rem;}
+        
+        .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; margin-top: 1rem;}
+        .tag {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--muted);
+            background: var(--surface-3);
+            border: 1px solid var(--line);
+            padding: 0.3rem 0.6rem;
+            border-radius: 6px;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+        .skill-category {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            padding: 1.5rem;
+            border-radius: 12px;
+            transition: var(--transition);
+        }
+        .skill-category:hover { border-color: var(--accent); box-shadow: var(--glow); }
+        .skill-category h4 { margin-bottom: 1rem; color: var(--text); display: flex; align-items: center; gap: 0.5rem; font-size: 1.05rem; }
+        .skill-category h4 i { color: var(--accent); }
+        
+        /* Certifications Grid */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+        .cert-card {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            padding: 1.2rem;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+        .cert-card:hover { border-color: var(--accent); }
+
+        /* Contact Section */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            background: var(--surface);
+            border: 1px solid var(--line);
+            padding: 3rem;
+            border-radius: 20px;
+        }
+        
+        .contact-info h3 { font-size: 2.2rem; font-weight: 800; line-height: 1.2; margin-bottom: 1rem; }
+        .contact-info p { color: var(--muted); margin-bottom: 2rem; }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .contact-icon {
+            width: 45px; height: 45px;
+            border-radius: 12px;
+            background: var(--surface-3);
+            border: 1px solid var(--line);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--accent);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        .contact-icon:hover { background: var(--accent); color: #021017; border-color: var(--accent); }
+        
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            background: var(--surface-3);
+            border: 1px solid var(--line);
+            padding: 1rem;
+            border-radius: 8px;
+            color: var(--text);
+            font-family: var(--font-main);
+            transition: var(--transition);
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        .form-group textarea { resize: vertical; min-height: 120px; }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.4); }
+            70% { box-shadow: 0 0 0 6px rgba(52, 211, 153, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); }
+        }
+
+        /* Fully Responsive Mobile Design */
+        @media (max-width: 1000px) {
+            .nav-content { flex-wrap: wrap; }
+            .logo { width: 50%; font-size: 1rem; }
+            .nav-actions { width: 50%; display: flex; justify-content: flex-end; }
+            .nav-links {
+                width: 100%;
+                margin-top: 1rem;
+                display: flex;
+                overflow-x: auto;
+                white-space: nowrap;
+                padding-bottom: 0.5rem;
+                gap: 1.2rem;
+                justify-content: flex-start;
+            }
+            /* Hide scrollbar for nav links */
+            .nav-links::-webkit-scrollbar { display: none; }
+            .nav-links { -ms-overflow-style: none; scrollbar-width: none; }
+        }
+
+        @media (max-width: 900px) {
+            .hero-grid { grid-template-columns: 1fr; text-align: center; }
+            .hero-actions { justify-content: center; flex-wrap: wrap; }
+            .lang-pills { justify-content: center; }
+            .contact-wrapper { grid-template-columns: 1fr; padding: 2rem; }
+            .projects-grid { grid-template-columns: 1fr; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .hero-img { width: 280px; height: 280px; }
+            .hero-img-backdrop { width: 290px; height: 290px; }
+            section { padding: 4rem 0; }
+        }
+        
+        @media (max-width: 500px) {
+            .container { padding: 0 1.2rem; }
+            .timeline-item { padding: 1.5rem; }
+            .project-card { padding: 1.5rem; }
+            .btn { width: 100%; justify-content: center; }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- SIDEBAR NAVIGATION -->
-    <aside class="sidebar">
-        <div class="sidebar-profile">
-            <img src="portfolio.jpeg" alt="Anugrah Kizhakke Veedu" onerror="this.src='https://via.placeholder.com/150/4361ee/ffffff?text=Photo'">
-            <div style="margin-top: 12px; margin-bottom: 8px;">
-                <span style="background: rgba(46, 213, 115, 0.1); color: #2ed573; border: 1px solid rgba(46, 213, 115, 0.3); padding: 5px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 600; display: inline-flex; align-items: center; gap: 8px;">
-                    <span style="width: 8px; height: 8px; background: #2ed573; border-radius: 50%; display: inline-block; animation: pulse-green 2s infinite;"></span>
-                    Open to Opportunities
-                </span>
+    <!-- NAVBAR -->
+    <nav>
+        <div class="container nav-content">
+            <div class="logo">
+                Anugrah Kizhakke Veedu<span style="color: var(--accent);">.</span>
             </div>
-            <p style="font-size: 0.8rem; color: var(--text-secondary); font-weight: 600; letter-spacing: 1px; text-transform: uppercase;">Digital Portfolio</p>
-            <div style="margin-top: 15px; display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; padding: 0 10px;">
-                <span style="font-size: 0.65rem; color: var(--muted); border: 1px solid var(--line); padding: 2px 6px; border-radius: 4px;">English</span>
-                <span style="font-size: 0.65rem; color: var(--muted); border: 1px solid var(--line); padding: 2px 6px; border-radius: 4px;">Hindi</span>
-                <span style="font-size: 0.65rem; color: var(--muted); border: 1px solid var(--line); padding: 2px 6px; border-radius: 4px;">Malayalam</span>
-                <span style="font-size: 0.65rem; color: var(--muted); border: 1px solid var(--line); padding: 2px 6px; border-radius: 4px;">Tamil</span>
-            </div>
-        </div>
-        
-        <nav class="sidebar-nav">
-            <ul>
-                <li><a href="#home" class="active" onclick="setActive(this)"><i class="fas fa-home"></i> Home</a></li>
-                <li><a href="#summary" onclick="setActive(this)"><i class="fas fa-user-shield"></i> Summary</a></li>
-                <li><a href="#skills" onclick="setActive(this)"><i class="fas fa-laptop-code"></i> Tech Skills</a></li>
-                <li><a href="#experience" onclick="setActive(this)"><i class="fas fa-briefcase"></i> Experience</a></li>
-                <li><a href="#projects" onclick="setActive(this)"><i class="fas fa-project-diagram"></i> Projects</a></li>
-                <li><a href="#certifications" onclick="setActive(this)"><i class="fas fa-certificate"></i> Certifications</a></li>
-                <li><a href="#education" onclick="setActive(this)"><i class="fas fa-graduation-cap"></i> Education</a></li>
-            </ul>
-        </nav>
-    </aside>
-
-    <!-- MAIN CONTENT -->
-    <main class="main-content">
-        
-        <!-- Theme Toggle -->
-        <div class="theme-toggle-wrapper">
-            <button class="theme-btn" onclick="toggleTheme()" id="theme-icon" aria-label="Toggle Dark Mode">
-                <i class="fas fa-moon"></i>
-            </button>
-        </div>
-
-        <!-- HEADER / HOME -->
-        <div class="card" id="home" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-            <h1 class="main-title">Anugrah Kizhakke Veedu</h1>
-            <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 0.8rem;">
-                <i class="fas fa-map-marker-alt" style="color: var(--accent-color);"></i> Cybersecurity Professional
-            </p>
             
-            <p style="color: var(--text-secondary); font-size: 1.1rem; font-weight: 500; margin-bottom: 1.5rem; margin-top: 0;">
-                <span style="color: var(--accent-color); font-weight: 600;">SOC Analyst & Security Engineer</span> | MSc Cyber Security
-            </p>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#skills">Skills</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="#certifications">Certifications</a>
+                <a href="#education">Education</a>
+            </div>
+
+            <div class="nav-actions">
+                <button class="theme-btn" onclick="toggleTheme()" id="theme-icon" aria-label="Toggle Dark/Light Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <a href="#contact" class="btn btn-primary">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="home">
+        <div class="container hero-grid">
+            <div class="hero-text">
+                <div class="status-badge">
+                    <span class="status-dot"></span> Open to Opportunities
+                </div>
+                <h1 class="hero-title">Hi, I'm <br><span class="gradient-text">Anugrah Kizhakke Veedu</span></h1>
+                
+                <p class="hero-subtitle">
+                    Cybersecurity professional with an MSc in Cyber Security and hands-on experience across SOC operations, security monitoring, threat hunting, vulnerability assessment, malware analysis, and web application security. Experienced in building and operating security labs using Wazuh, ELK Stack, Suricata, Snort, pfSense, and Linux, with practical exposure to SIEM alert investigation, IDS rule development, IOC enrichment, MITRE ATT&CK mapping, and incident triage. Strong scripting and automation skills using Python and REST APIs.
+                </p>
+                
+                <div class="hero-actions">
+                    <a href="#projects" class="btn btn-primary">View Projects</a>
+                    <!-- Updated PDF File Name -->
+                    <a href="anugrah kizhakke veedu.pdf" download class="btn btn-outline"><i class="fas fa-download"></i> Download CV</a>
+                </div>
+
+                <div class="lang-pills">
+                    <span style="font-size: 0.85rem; color: var(--muted); margin-right: 10px; align-self: center; font-family: var(--font-main);">Languages:</span>
+                    <span class="lang-pill">English</span>
+                    <span class="lang-pill">Hindi</span>
+                    <span class="lang-pill">Malayalam</span>
+                    <span class="lang-pill">Tamil</span>
+                </div>
+            </div>
             
-            <div class="social-links">
-                <a href="https://wa.me/918547743622" target="_blank" class="social-icon whatsapp" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                <a href="https://www.linkedin.com/in/anugrah-kizhakke-veedu" target="_blank" class="social-icon linkedin" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://github.com/Anugrahkv" target="_blank" class="social-icon github" title="GitHub"><i class="fab fa-github"></i></a>
-                <a href="mailto:anugrahkv07@gmail.com" class="social-icon email" title="Email"><i class="fas fa-envelope"></i></a>
-            </div>
-
-            <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:.55rem;margin:0 0 1.4rem;">
-                <span class="tag"><i class="fas fa-shield-halved"></i> SOC Operations</span>
-                <span class="tag"><i class="fas fa-magnifying-glass-chart"></i> Threat Detection</span>
-                <span class="tag"><i class="fas fa-network-wired"></i> Network Security</span>
-                <span class="tag"><i class="fas fa-code"></i> Security Automation</span>
-            </div>
-
-            <div style="width: 100%; display: flex; justify-content: center;">
-                <a href="Anugrah Kizhakke Veedu.pdf" download class="btn btn-primary">
-                    <i class="fas fa-file-download"></i> Download CV
-                </a>
+            <div class="hero-img-wrapper">
+                <div class="hero-img-backdrop"></div>
+                <!-- MAKE SURE YOUR IMAGE IS NAMED EXACTLY portfolio.jpeg -->
+                <img src="portfolio.jpeg" alt="Anugrah Kizhakke Veedu" class="hero-img" onerror="this.src='https://via.placeholder.com/350/0a0a0a/22d3ee?text=Photo'">
             </div>
         </div>
+    </section>
 
-        <!-- SUMMARY -->
-        <div class="card" id="summary">
-            <h2 class="section-title"><i class="fas fa-user-shield"></i> Professional Summary</h2>
-            <p style="color: var(--text-secondary);">Detail-oriented Cybersecurity professional with an MSc in Cyber Security and hands-on experience turning noisy environments into monitored, hardened, and audit-ready systems. Specialized in SOC operations, proficient in deploying full IDS pipelines (pfSense, Suricata, ELK Stack), executing threat analysis mapped to the MITRE ATT&CK framework, and developing automated triage tools. Seeking a SOC Analyst position to leverage strong infrastructure hardening, log analysis, and incident response capabilities to defend enterprise perimeters.</p>
-        </div>
-
-        <!-- TECHNICAL SKILLS -->
-        <div class="card" id="skills">
-            <h2 class="section-title"><i class="fas fa-laptop-code"></i> Technical Skills</h2>
-            <div class="skills-category-grid">
-                <div class="skill-box">
-                    <h4><i class="fas fa-search-shield"></i> Security Operations (SOC)</h4>
-                    <div class="tags-grid">
-                        <span class="tag">Threat Hunting</span>
-                        <span class="tag">Log Analysis</span>
-                        <span class="tag">Malware Analysis</span>
-                        <span class="tag">Phishing Analysis</span>
-                        <span class="tag">Incident Response</span>
-                        <span class="tag">Vulnerability Assessments</span>
-                        <span class="tag">MITRE ATT&CK Mapping</span>
+    <!-- TECHNICAL SKILLS -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title"><span class="gradient-text">Technical Skills</span></h2>
+            
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <!-- Changed Icon to Shield-Halved for SOC -->
+                    <h4><i class="fas fa-shield-halved"></i> SOC & Security Operations</h4>
+                    <div class="tags">
+                        <span class="tag">Security Monitoring</span> <span class="tag">Alert Triage</span>
+                        <span class="tag">Threat Hunting</span> <span class="tag">Incident Response</span>
+                        <span class="tag">IOC Analysis</span> <span class="tag">Log Analysis</span>
+                        <span class="tag">Phishing Analysis</span> <span class="tag">Malware Analysis</span>
+                        <span class="tag">MITRE ATT&CK</span> <span class="tag">Threat Intelligence</span>
                     </div>
+                </div>
+
+                <div class="skill-category">
+                    <h4><i class="fas fa-sitemap"></i> SIEM, IDS/IPS & Network Security</h4>
+                    <div class="tags">
+                        <span class="tag">Wazuh</span> <span class="tag">ELK Stack (Elasticsearch, Logstash, Kibana)</span> 
+                        <span class="tag">Splunk</span> <span class="tag">Suricata</span> 
+                        <span class="tag">Snort</span> <span class="tag">pfSense</span>
+                        <span class="tag">FortiGate</span> <span class="tag">Network Traffic Analysis</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h4><i class="fas fa-shield-alt"></i> Vulnerability Assessment & Web Security</h4>
+                    <div class="tags">
+                        <span class="tag">Burp Suite</span> <span class="tag">OWASP Top 10</span> 
+                        <span class="tag">Web Application Security Testing</span> <span class="tag">Vulnerability Assessment</span>
+                        <span class="tag">Secure Coding</span> <span class="tag">Input Validation</span>
+                        <span class="tag">Authentication & Session Security</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h4><i class="fas fa-biohazard"></i> Malware Analysis & Threat Intelligence</h4>
+                    <div class="tags">
+                        <span class="tag">Any.Run</span> <span class="tag">VirusTotal</span> 
+                        <span class="tag">AbuseIPDB</span> <span class="tag">IOC Extraction</span>
+                        <span class="tag">C2 Identification</span> <span class="tag">Sandbox Analysis</span>
+                        <span class="tag">OSINT</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h4><i class="fas fa-server"></i> Systems & Tools</h4>
+                    <div class="tags">
+                        <span class="tag">Linux/Ubuntu Server</span> <span class="tag">Kali Linux</span> 
+                        <span class="tag">Wireshark</span> <span class="tag">VirtualBox</span>
+                        <span class="tag">Command Line</span> <span class="tag">Git</span>
+                        <span class="tag">JSON</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h4><i class="fas fa-code"></i> Programming & Automation</h4>
+                    <div class="tags">
+                        <span class="tag">Python</span> <span class="tag">Django</span> 
+                        <span class="tag">REST APIs</span> <span class="tag">JSON Parsing</span>
+                        <span class="tag">Security Automation</span> <span class="tag">Automated IOC Enrichment</span>
+                        <span class="tag">Triage Scripting</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROFESSIONAL EXPERIENCE -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title"><span class="gradient-text">Professional Experience</span></h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div class="timeline-title">
+                            <h3>Web Application Developer Intern - Security & Infrastructure Focus</h3>
+                            <h4>Btrac Solutions • Kerala, India</h4>
+                        </div>
+                        <!-- Updated Date -->
+                        <div class="timeline-date">July 2022 - Mar 2023</div>
+                    </div>
+                    <ul class="bullet-list">
+                        <li>Supported application and infrastructure operations across internal evaluation systems and 3 client-facing hosting nodes, including monitoring, maintenance, security updates, and troubleshooting.</li>
+                        <li>Performed security-focused testing of web applications using OWASP Top 10 principles and Burp Suite techniques to identify common application vulnerabilities before deployment.</li>
+                        <li>Collaborated with development and infrastructure teams to deploy application updates and security patches across staging and production environments.</li>
+                        <li>Developed and maintained Python/Django components with emphasis on secure authentication, input validation, database security, and protection of sensitive application data.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CYBERSECURITY PROJECTS -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title"><span class="gradient-text">Cybersecurity Projects</span></h2>
+            
+            <div class="projects-grid">
+                
+                <!-- Project 1: IDS System -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <h3 class="project-title">Intrusion Detection & Threat Monitoring System</h3>
+                            <div class="project-meta">Master's Project - Teesside University • Sept 2023 - Sept 2024</div>
+                        </div>
+                        <a href="https://github.com/Anugrahkv/ids" target="_blank" title="View Code" style="color: var(--muted);"><i class="fab fa-github fa-lg"></i></a>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">Ubuntu Server</span> <span class="tag">pfSense</span>
+                        <span class="tag">Suricata</span> <span class="tag">Elasticsearch</span>
+                        <span class="tag">Logstash</span> <span class="tag">Kibana</span>
+                    </div>
+                    <ul class="bullet-list" style="flex-grow: 1;">
+                        <li>Designed and deployed a layered network security environment integrating pfSense firewall, Suricata IDS, and the ELK Stack for centralized security monitoring.</li>
+                        <li>Built a centralized log pipeline using Elasticsearch, Logstash, and Kibana to collect, process, visualize, and investigate security events from multiple sources.</li>
+                        <li>Developed and tested 15+ custom Suricata detection rules for network threats and security events, improving visibility into suspicious traffic.</li>
+                        <li>Reduced manual log review time by approximately 30% through centralized security event collection and visualization.</li>
+                        <li>Investigated IDS alerts and correlated network events with relevant MITRE ATT&CK techniques and known vulnerability patterns.</li>
+                    </ul>
+                </div>
+
+                <!-- Project 2: Home Lab -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <h3 class="project-title">Active SOC Home Lab & Threat Hunting Environment</h3>
+                            <div class="project-meta">Independent Lab • July 2026</div>
+                        </div>
+                        <a href="https://github.com/Anugrahkv/SOC-lab" target="_blank" title="View Code" style="color: var(--muted);"><i class="fab fa-github fa-lg"></i></a>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">VirtualBox</span> <span class="tag">Wazuh SIEM</span>
+                        <span class="tag">Snort IDS</span> <span class="tag">Kali Linux</span> <span class="tag">Linux</span>
+                    </div>
+                    <ul class="bullet-list" style="flex-grow: 1;">
+                        <li>Built a segmented virtual SOC environment using VirtualBox with isolated NAT and Host-Only networks for controlled attack simulation and security monitoring.</li>
+                        <li>Deployed Wazuh as the central SIEM and integrated Snort IDS to collect, correlate, and investigate security events generated within the lab environment.</li>
+                        <li>Simulated attacker activity from Kali Linux against a Linux victim system and validated SIEM detection, alert generation, and investigation workflows.</li>
+                        <li>Practiced SOC workflows including event analysis, suspicious activity investigation, alert triage, and identification of potential indicators of compromise.</li>
+                    </ul>
+                </div>
+
+                <!-- Project 3: Malware Analysis -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <h3 class="project-title">Advanced Malware Detonation & C2 Analysis</h3>
+                            <div class="project-meta">Independent Project • June 2026</div>
+                        </div>
+                        <a href="https://github.com/Anugrahkv/AdvancedMalwareAnalysis" target="_blank" title="View Code" style="color: var(--muted);"><i class="fab fa-github fa-lg"></i></a>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">Any.Run</span> <span class="tag">Suricata</span>
+                        <span class="tag">MITRE ATT&CK</span> <span class="tag">OSINT</span>
+                    </div>
+                    <ul class="bullet-list" style="flex-grow: 1;">
+                        <li>Analyzed malicious macro-enabled documents in an isolated Any.Run sandbox, examining process execution, network activity, and behavioral indicators.</li>
+                        <li>Extracted Indicators of Compromise (IOCs), including suspicious IP addresses, domains, user-agent activity, and Command-and-Control (C2) communication patterns.</li>
+                        <li>Correlated malware network activity with Suricata alerts and mapped observed attacker behaviors to relevant MITRE ATT&CK tactics and techniques.</li>
+                        <li>Documented findings as actionable threat intelligence for detection and incident investigation.</li>
+                    </ul>
+                </div>
+
+                <!-- Project 4: SOC Dashboard -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <h3 class="project-title">SOC Automation & IOC Enrichment Dashboard</h3>
+                            <div class="project-meta">Independent Project • June 2026</div>
+                        </div>
+                        <a href="https://github.com/Anugrahkv/soc-automation-dashboard" target="_blank" title="View Code" style="color: var(--muted);"><i class="fab fa-github fa-lg"></i></a>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">Python</span> <span class="tag">Django</span>
+                        <span class="tag">VirusTotal API v3</span> <span class="tag">AbuseIPDB API</span>
+                        <span class="tag">REST</span> <span class="tag">JSON</span>
+                    </div>
+                    <ul class="bullet-list" style="flex-grow: 1;">
+                        <li>Developed a Python/Django-based SOC triage dashboard to automate IOC enrichment and reduce repetitive manual investigation tasks.</li>
+                        <li>Integrated VirusTotal and AbuseIPDB REST APIs to retrieve malware intelligence, IP reputation, and multi-source threat information.</li>
+                        <li>Implemented backend processing and JSON parsing to automatically classify and enrich submitted indicators for analyst investigation.</li>
+                        <li>Validated the workflow using known malicious hashes and suspicious scanner IPs to test enrichment results and triage logic.</li>
+                    </ul>
+                </div>
+
+                <!-- Project 5: TrippyGo -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <h3 class="project-title">TrippyGo - Secure Full-Stack Web Application</h3>
+                            <div class="project-meta">Bachelor's Project - Kannur University • 2023</div>
+                        </div>
+                        <a href="https://github.com/Anugrahkv/trippygo" target="_blank" title="View Code" style="color: var(--muted);"><i class="fab fa-github fa-lg"></i></a>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">Python</span> <span class="tag">Django</span>
+                        <span class="tag">HTML</span> <span class="tag">CSS</span> <span class="tag">SQLite</span>
+                    </div>
+                    <ul class="bullet-list" style="flex-grow: 1;">
+                        <li>Developed a full-stack Django web application with security-focused authentication, input validation, database access controls, and session management.</li>
+                        <li>Applied secure development practices to mitigate common web vulnerabilities including SQL injection and Cross-Site Scripting (XSS).</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section id="certifications">
+        <div class="container">
+            <h2 class="section-title"><span class="gradient-text">Certifications</span></h2>
+            
+            <div class="cert-grid">
+                <div class="cert-card">
+                    <div>
+                        <h4 style="margin-bottom: 0.2rem; font-size: 1rem;">Fortinet Certified Associate (FCA)</h4>
+                        <span style="font-size: 0.8rem; color: var(--muted);">Fortinet • ID: 9668149803AK • June 2026</span>
+                    </div>
+                    <i class="fas fa-shield-check" style="color: var(--accent); font-size: 1.5rem;"></i>
                 </div>
                 
-                <div class="skill-box">
-                    <h4><i class="fas fa-sitemap"></i> SIEM & Network Defense</h4>
-                    <div class="tags-grid">
-                        <span class="tag">ELK Stack</span>
-                        <span class="tag">Wazuh SIEM</span>
-                        <span class="tag">Splunk SIEM</span>
-                        <span class="tag">Next-Gen Firewalls</span>
-                        <span class="tag">FortiGate & pfSense</span>
-                        <span class="tag">Suricata & Snort IDS</span>
-                        <span class="tag">VPNs</span>
+                <div class="cert-card">
+                    <div>
+                        <h4 style="margin-bottom: 0.2rem; font-size: 1rem;">Fortinet Certified Fundamentals (FCF)</h4>
+                        <span style="font-size: 0.8rem; color: var(--muted);">Fortinet • ID: 7103587775AK • June 2026</span>
+                    </div>
+                    <i class="fas fa-shield-check" style="color: var(--accent); font-size: 1.5rem;"></i>
+                </div>
+
+                <div class="cert-card">
+                    <div>
+                        <h4 style="margin-bottom: 0.2rem; font-size: 1rem;">Elastic Ecosystem & Tech Essentials</h4>
+                        <span style="font-size: 0.8rem; color: var(--muted);">Elastic • ID: LP1357 • June 2026</span>
+                    </div>
+                    <i class="fas fa-database" style="color: var(--accent); font-size: 1.5rem;"></i>
+                </div>
+
+                <div class="cert-card">
+                    <div>
+                        <h4 style="margin-bottom: 0.2rem; font-size: 1rem;">Linux Fundamentals</h4>
+                        <span style="font-size: 0.8rem; color: var(--muted);">Hack The Box Academy • June 2026</span>
+                    </div>
+                    <i class="fab fa-linux" style="color: var(--accent); font-size: 1.5rem;"></i>
+                </div>
+                
+                <div class="cert-card">
+                    <div>
+                        <h4 style="margin-bottom: 0.2rem; font-size: 1rem;">Mastercard Cybersecurity Job Simulation</h4>
+                        <span style="font-size: 0.8rem; color: var(--muted);">Forage • June 2026</span>
+                    </div>
+                    <i class="fas fa-certificate" style="color: var(--accent); font-size: 1.5rem;"></i>
+                </div>
+
+                <div class="cert-card" style="border-color: rgba(34, 211, 238, 0.4); background: rgba(34, 211, 238, 0.05); flex-direction: column; align-items: flex-start;">
+                    <h4 style="margin-bottom: 0.5rem; font-size: 1rem;"><i class="fas fa-spinner fa-spin" style="font-size: 0.9rem; margin-right: 5px;"></i> Currently Enrolled Training</h4>
+                    <p style="font-size: 0.85rem; color: var(--muted);">Red Team Hacker Academy, Calicut</p>
+                    <ul style="font-size: 0.8rem; margin-top: 0.5rem; color: var(--text);">
+                        <li>• Certified Ethical Hacker (CEH) - Expected Oct 2026</li>
+                        <li>• Certified IT Infrastructure & Cyber SOC Analyst (CICSA) - Expected Oct 2026</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title"><span class="gradient-text">Education</span></h2>
+            
+            <div class="timeline" style="margin-bottom: 4rem;">
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div class="timeline-title">
+                            <h3>Master of Science in Cyber Security</h3>
+                            <h4>Teesside University • Middlesbrough, UK</h4>
+                        </div>
+                        <div class="timeline-date">2023 - 2024</div>
                     </div>
                 </div>
 
-                <div class="skill-box">
-                    <h4><i class="fas fa-server"></i> Analysis Tools & Admin</h4>
-                    <div class="tags-grid">
-                        <span class="tag">Linux Server Administration</span>
-                        <span class="tag">Any.Run Sandbox</span>
-                        <span class="tag">Wireshark</span>
-                        <span class="tag">Splunk Familiarity</span>
-                        <span class="tag">Command-Line (CLI)</span>
-                    </div>
-                </div>
-
-                <div class="skill-box">
-                    <h4><i class="fas fa-globe"></i> Vulnerability & Web Security</h4>
-                    <div class="tags-grid">
-                        <span class="tag">Burp Suite</span>
-                        <span class="tag">OWASP Top 10</span>
-                        <span class="tag">Web App Testing</span>
-                        <span class="tag">Secure Coding</span>
-                        <span class="tag">Input Validation</span>
-                        <span class="tag">Session Security</span>
-                    </div>
-                </div>
-
-                <div class="skill-box">
-                    <h4><i class="fas fa-code"></i> Security Automation</h4>
-                    <div class="tags-grid">
-                        <span class="tag">Python & Django</span>
-                        <span class="tag">REST API Integration</span>
-                        <span class="tag">JSON Parsing</span>
-                        <span class="tag">VirusTotal & AbuseIPDB</span>
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div class="timeline-title">
+                            <h3>Bachelor of Computer Applications (BCA)</h3>
+                            <h4>Kannur University • Kerala, India</h4>
+                        </div>
+                        <div class="timeline-date">2020 - 2023</div>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- EXPERIENCE -->
-        <div class="card" id="experience">
-            <h2 class="section-title"><i class="fas fa-briefcase"></i> Professional Experience</h2>
-            
-            <div class="experience-item">
-                <h3 class="job-title">Web Application Developer (Intern) - Security & Infrastructure Focus</h3>
-                <div class="meta-info">
-                    <span class="highlight-text"><i class="fas fa-building"></i> Btrac Solutions</span>
-                    <span>&bull; Kerala, India</span>
-                    <span>&bull; <i class="far fa-calendar-alt"></i> July 2022 - Mar 2023</span>
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h3>Let's build something <span class="gradient-text">secure</span> together.</h3>
+                    <p>I'm always open to discussing SOC operations, threat intelligence, and defensive architecture. Feel free to reach out through any platform below.</p>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <span style="display: block; font-size: 0.8rem; color: var(--muted);">Email</span>
+                            <a href="mailto:anugrahkv07@gmail.com" style="font-weight: 500;">anugrahkv07@gmail.com</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
+                        <div>
+                            <span style="display: block; font-size: 0.8rem; color: var(--muted);">WhatsApp / Phone</span>
+                            <a href="https://wa.me/918547743622" target="_blank" style="font-weight: 500;">+91 8547743622</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div>
+                            <span style="display: block; font-size: 0.8rem; color: var(--muted);">Location</span>
+                            <span style="font-weight: 500;">Kannur, Kerala, India</span>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                        <a href="https://www.linkedin.com/in/anugrah-kizhakke-veedu" target="_blank" class="contact-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/Anugrahkv" target="_blank" class="contact-icon"><i class="fab fa-github"></i></a>
+                    </div>
                 </div>
-                <ul class="custom-list">
-                    <li>Supported application and infrastructure operations across internal evaluation systems and 3 client-facing hosting nodes, including monitoring and maintenance.</li>
-                    <li>Performed security-focused testing using OWASP Top 10 principles and Burp Suite to identify vulnerabilities prior to deployment.</li>
-                    <li>Collaborated with engineering teams to securely deploy patches across staging and production environments, maintaining web components using Python and Django.</li>
-                    <li>Developed secure authentication, input validation, and database security protocols to protect sensitive application data.</li>
-                </ul>
+
+                <form action="https://formspree.io/f/xeaoaonl" method="POST" class="contact-form">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Email Address" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" placeholder="Message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="justify-content: center; width: 100%; padding: 1rem;">Send Message <i class="fas fa-paper-plane"></i></button>
+                </form>
             </div>
         </div>
+    </section>
 
-        <!-- KEY PROJECTS -->
-        <div class="card" id="projects">
-            <h2 class="section-title"><i class="fas fa-project-diagram"></i> Key Projects</h2>
-            
-            <!-- PROJECT 1: IDS System -->
-            <div class="experience-item">
-                <h3 class="job-title">Intrusion Detection & Threat Monitoring System (IDS)</h3>
-                <div class="meta-info">
-                    <span class="highlight-text"><i class="fas fa-network-wired"></i> Master's Project</span> 
-                    <span>&bull; Ubuntu Server, pfSense, Suricata, ELK Stack</span>
-                    <span>&bull; Sept 2023 - Sept 2024</span>
-                </div>
-                <ul class="custom-list">
-                    <li>Designed and deployed a production-simulating multi-layered IDS environment from scratch, integrating an open-source firewall, intrusion detection system, and real-time monitoring tools.</li>
-                    <li>Built a centralized SIEM pipeline using Elasticsearch, Logstash, and Kibana to aggregate multi-source security logs, reducing manual log review time by 30%.</li>
-                    <li>Engineered 15+ custom detection rules using Suricata, reducing false-positive alerts by 20% while expanding defensive visibility against critical CVEs mapped to MITRE ATT&CK vectors.</li>
-                </ul>
-                <div class="project-actions">
-                    <a href="https://github.com/Anugrahkv/ids" target="_blank" class="btn btn-outline btn-sm"><i class="fab fa-github"></i> View Repository</a>
-                </div>
-            </div>
+    <!-- FOOTER -->
+    <footer style="text-align: center; padding: 2rem; border-top: 1px solid var(--line); font-size: 0.8rem; color: var(--muted); font-family: var(--font-mono);">
+        © 2026 Anugrah Kizhakke Veedu. DETECT • ANALYZE • RESPOND.
+    </footer>
 
-            <!-- PROJECT 2: Home SOC Lab -->
-            <div class="experience-item">
-                <h3 class="job-title">Active SOC Home Lab & Threat Hunting Environment</h3>
-                <div class="meta-info">
-                    <span class="highlight-text"><i class="fas fa-shield-alt"></i> Security Lab</span>
-                    <span>&bull; VirtualBox, SIEM Wazuh, Snort IDS, Kali Linux</span>
-                    <span>&bull; July 2026</span>
-                </div>
-                <ul class="custom-list">
-                    <li>Architected a multi-subnet virtualized SOC environment utilizing VirtualBox, establishing isolated NAT and Host-Only networks to safely execute and monitor attack simulations.</li>
-                    <li>Deployed a centralized defense infrastructure featuring a Wazuh SIEM, integrating a Snort NIDS engine to ingest, parse, and analyze internal lab traffic.</li>
-                    <li>Engineered an attack-and-defend pipeline by configuring a Kali Linux adversary node to launch targeted activity against a Linux victim machine, validating SIEM detection and alert logic.</li>
-                </ul>
-                <div class="project-actions">
-                    <a href="https://github.com/Anugrahkv/SOC-lab" target="_blank" class="btn btn-outline btn-sm"><i class="fab fa-github"></i> View Repository</a>
-                </div>
-            </div>
-
-            <!-- PROJECT 3: Malware Detonation -->
-            <div class="experience-item">
-                <h3 class="job-title">Advanced Malware Detonation & C2 Extraction</h3>
-                <div class="meta-info">
-                    <span class="highlight-text"><i class="fas fa-biohazard"></i> Independent Project</span>
-                    <span>&bull; Any.Run Sandbox, Suricata IDS, MITRE ATT&CK</span>
-                    <span>&bull; June 2026</span>
-                </div>
-                <ul class="custom-list">
-                    <li>Executed and analyzed weaponized malware payloads (Macro-enabled documents) within an isolated Any.Run cloud sandbox to map runtime execution graphs and process injection sequences.</li>
-                    <li>Extracted actionable Indicators of Compromise (IoCs), identifying external Command & Control (C2) IP infrastructure and spoofed user-agent beaconing behavior over HTTPS.</li>
-                    <li>Correlated network telemetry with Suricata IDS signatures and mapped adversary Tactics, Techniques, and Procedures (TTPs) directly to the MITRE ATT&CK framework.</li>
-                </ul>
-                <div class="project-actions">
-                    <a href="https://github.com/Anugrahkv/AdvancedMalwareAnalysis" target="_blank" class="btn btn-outline btn-sm"><i class="fab fa-github"></i> View Repository</a>
-                </div>
-            </div>
-
-            <!-- PROJECT 4: SOC Automation Dashboard -->
-            <div class="experience-item">
-                <h3 class="job-title">SOC Automation & Enrichment Dashboard</h3>
-                <div class="meta-info">
-                    <span class="highlight-text"><i class="fas fa-code"></i> Independent Project</span>
-                    <span>&bull; Python, Django, REST APIs, JSON</span>
-                    <span>&bull; June 2026</span>
-                </div>
-                <ul class="custom-list">
-                    <li>Engineered a custom Tier 1 SOC triage dashboard to automate the enrichment of Indicators of Compromise (IOCs) and reduce manual alert fatigue.</li>
-                    <li>Developed intelligent backend auto-routing logic and integrated RESTful APIs to extract and parse complex JSON threat intelligence for network reputation and multi-engine malware telemetry.</li>
-                    <li>Conducted rigorous True Positive and True Negative validation simulations against live malware hashes (e.g., WannaCry) and active scanner IPs to verify engine accuracy.</li>
-                </ul>
-                <div class="project-actions">
-                    <a href="https://github.com/Anugrahkv/soc-automation-dashboard" target="_blank" class="btn btn-outline btn-sm"><i class="fab fa-github"></i> View Repository</a>
-                </div>
-            </div>
-
-            <!-- PROJECT 5: TrippyGo -->
-            <div class="experience-item" style="border: none; margin-bottom: 0; padding-bottom: 0;">
-                <h3 class="job-title">TrippyGo - Secure Full-Stack Web Application</h3>
-                <div class="meta-info">
-                    <span class="highlight-text"><i class="fas fa-globe"></i> Bachelor's Project</span>
-                    <span>&bull; Python, Django, HTML, CSS, SQLite</span>
-                    <span>&bull; 2023</span>
-                </div>
-                <ul class="custom-list">
-                    <li>Engineered a full-stack application with a security-first approach, implementing robust cryptographic session management and strict input validation to systematically eliminate SQL injection and XSS vulnerabilities.</li>
-                    <li>Applied MVC architecture principles and developed automated maintenance scripts to ensure secure database handling with zero deployment downtime.</li>
-                </ul>
-                <div class="project-actions">
-                    <a href="https://github.com/Anugrahkv/trippygo" target="_blank" class="btn btn-outline btn-sm"><i class="fab fa-github"></i> View Repository</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- CERTIFICATIONS -->
-        <div class="card" id="certifications">
-            <h2 class="section-title"><i class="fas fa-certificate"></i> Certifications & Training</h2>
-            
-            <div class="experience-item" style="margin-bottom: 1.5rem; padding-bottom: 1.5rem;">
-                <h3 class="job-title">Fortinet Certified Associate (FCA) in Cybersecurity</h3>
-                <div class="meta-info">
-                    <span class="highlight-text">Fortinet</span>
-                    <span>&bull; ID: 9668149803AK</span>
-                    <span>&bull; June 2026</span>
-                </div>
-                <a href="https://www.credly.com/badges/ee7010c3-dd25-4626-9b7b-2ca21d2b37b3/linked_in_profile" target="_blank" class="verify-link"><i class="fas fa-external-link-alt"></i> Verify Badge</a>
-            </div>
-
-            <div class="experience-item" style="margin-bottom: 1.5rem; padding-bottom: 1.5rem;">
-                <h3 class="job-title">Fortinet Certified Fundamentals (FCF) in Cybersecurity</h3>
-                <div class="meta-info">
-                    <span class="highlight-text">Fortinet</span>
-                    <span>&bull; ID: 7103587775AK</span>
-                    <span>&bull; June 2026</span>
-                </div>
-                <a href="https://www.credly.com/badges/b526a88e-b39e-41f3-bce1-57111b30ee44/linked_in_profile" target="_blank" class="verify-link"><i class="fas fa-external-link-alt"></i> Verify Badge</a>
-            </div>
-
-            <div class="experience-item" style="margin-bottom: 1.5rem; padding-bottom: 1.5rem;">
-                <h3 class="job-title">Mastercard Cybersecurity Job Simulation</h3>
-                <div class="meta-info">
-                    <span class="highlight-text">Forage</span>
-                    <span>&bull; ID: Dc7opBdvrQhABvcP7</span>
-                    <span>&bull; June 2026</span>
-                </div>
-                <a href="https://www.theforage.com/completion-certificates/mfxGwGDp6WkQmtmTf/vcKAB5yYAgvemepGQ_mfxGwGDp6WkQmtmTf_6a292cfa0fc5153d42145f90_1781696501003_completion_certificate.pdf" target="_blank" class="verify-link"><i class="fas fa-external-link-alt"></i> View Certificate</a>
-            </div>
-
-            <div class="experience-item" style="margin-bottom: 1.5rem; padding-bottom: 1.5rem;">
-                <h3 class="job-title">Elastic Ecosystem & Technical Essentials</h3>
-                <div class="meta-info">
-                    <span class="highlight-text">Elastic</span>
-                    <span>&bull; ID: LP1357</span>
-                    <span>&bull; June 2026</span>
-                </div>
-                <a href="https://learn.elastic.co/share/v1/gamification/assigned_badge/a715d76e-fd69-4f8e-b131-9ee05affdef9/shared?lang=en&t=1781003188854" target="_blank" class="verify-link"><i class="fas fa-external-link-alt"></i> Verify Badge</a>
-            </div>
-            
-            <div class="experience-item" style="margin-bottom: 1.5rem; padding-bottom: 1.5rem;">
-                <h3 class="job-title">Linux Fundamentals</h3>
-                <div class="meta-info">
-                    <span class="highlight-text">Hack The Box Academy</span>
-                    <span>&bull; June 2026</span>
-                </div>
-                <a href="https://academy.hackthebox.com/achievement/badge/cb79eef1-61ef-11f1-82d1-bea50ffe6cb4" target="_blank" class="verify-link"><i class="fas fa-external-link-alt"></i> Verify Badge</a>
-            </div>
-
-            <div class="experience-item" style="border: none; margin-bottom: 0; padding-bottom: 0;">
-                <h3 class="job-title">Currently Enrolled Professional Development</h3>
-                <div class="meta-info">
-                    <span class="highlight-text">Red Team Hacker Academy, Calicut</span>
-                </div>
-                <ul class="custom-list">
-                    <li>Certified Ethical Hacker (CEH) — <i>Expected: October 2026</i></li>
-                    <li>Certified IT Infrastructure & Cyber SOC Analyst (CICSA) — <i>Expected: October 2026</i></li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- EDUCATION & LANGUAGES -->
-        <div class="card" id="education">
-            <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Education</h2>
-            
-            <div class="experience-item" style="margin-bottom: 1.5rem; padding-bottom: 1.5rem;">
-                <h3 class="job-title">Master of Science in Cyber Security</h3>
-                <div class="meta-info">
-                    <span class="highlight-text"><i class="fas fa-university"></i> Teesside University</span>
-                    <span>&bull; Middlesbrough, UK</span>
-                    <span>&bull; 2023 - 2024</span>
-                </div>
-            </div>
-            
-            <div class="experience-item" style="border: none; margin-bottom: 0; padding-bottom: 0;">
-                <h3 class="job-title">Bachelor's Degree in Computer Application</h3>
-                <div class="meta-info">
-                    <span class="highlight-text"><i class="fas fa-university"></i> Kannur University</span>
-                    <span>&bull; Kerala, India</span>
-                    <span>&bull; 2020 - 2023</span>
-                </div>
-            </div>
-        </div>
-
-        <div style="text-align:center;padding:1rem 0 0;color:var(--muted);font:500 .68rem 'JetBrains Mono',monospace;letter-spacing:.8px;">
-            <span style="color:var(--accent)">●</span> SECURITY PORTFOLIO <span style="opacity:.45">//</span> DETECT • ANALYZE • RESPOND
-        </div>
-    </main>
-
+    <!-- JS FOR THEME TOGGLE -->
     <script>
-        // --- Sidebar Navigation Active State ---
-        function setActive(element) {
-            document.querySelectorAll('.sidebar-nav a').forEach(link => link.classList.remove('active'));
-            element.classList.add('active');
-        }
-
-        // --- Intersection Observer for Scroll Spy ---
-        const sections = document.querySelectorAll('.card');
-        const navLinks = document.querySelectorAll('.sidebar-nav a');
-
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (scrollY >= sectionTop - 150) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').includes(current)) {
-                    link.classList.add('active');
-                }
-            });
-        });
-
-        // --- Dark/Light Mode Toggle Logic ---
         const body = document.body;
         const themeIcon = document.getElementById('theme-icon');
 
-        if (localStorage.getItem('theme') === 'dark') {
-            body.setAttribute('data-theme', 'dark');
+        // Check local storage for theme preference
+        if (localStorage.getItem('theme') === 'light') {
+            body.setAttribute('data-theme', 'light');
             themeIcon.innerHTML = '<i class="fas fa-sun"></i>';
         } else {
-            body.setAttribute('data-theme', 'light');
+            body.removeAttribute('data-theme');
             themeIcon.innerHTML = '<i class="fas fa-moon"></i>';
         }
 
         function toggleTheme() {
-            if (body.getAttribute('data-theme') === 'dark') {
-                body.setAttribute('data-theme', 'light');
-                localStorage.setItem('theme', 'light');
+            if (body.getAttribute('data-theme') === 'light') {
+                body.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'dark');
                 themeIcon.innerHTML = '<i class="fas fa-moon"></i>';
             } else {
-                body.setAttribute('data-theme', 'dark');
-                localStorage.setItem('theme', 'dark');
+                body.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
                 themeIcon.innerHTML = '<i class="fas fa-sun"></i>';
             }
         }
