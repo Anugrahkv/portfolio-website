@@ -1,3 +1,4 @@
+HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -522,7 +523,6 @@
         }
 
         /* Fully Responsive Mobile Design */
-/* Mobile Menu Button */
         .mobile-toggle {
             display: none;
             background: transparent;
@@ -534,7 +534,6 @@
         }
         .mobile-contact { display: none; }
 
-        /* Fully Responsive Mobile Design */
         @media (max-width: 1000px) {
             .nav-content { flex-wrap: nowrap; justify-content: space-between; }
             .logo { font-size: 1.1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px; }
@@ -612,8 +611,8 @@
             </div>
 
             <div class="nav-actions">
-                <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle Dark/Light Mode">
-                    <i class="fas fa-moon" id="theme-icon-inner"></i>
+                <button class="theme-btn" id="theme-toggle-btn" onclick="toggleTheme()" aria-label="Toggle Dark/Light Mode">
+                    <i class="fas fa-moon"></i>
                 </button>
                 <a href="#contact" class="btn btn-primary desktop-contact">Contact</a>
                 <button class="mobile-toggle" onclick="toggleMenu()">
@@ -633,12 +632,11 @@
                 <h1 class="hero-title">Hi, I'm <br><span class="gradient-text">Anugrah Kizhakke Veedu</span></h1>
                 
                 <p class="hero-subtitle">
-                    Cybersecurity professional with an MSc in Cyber Security and hands-on experience across SOC operations, security monitoring, threat hunting, vulnerability assessment, malware analysis, and web application security. Experienced in building and operating security labs using Wazuh, ELK Stack, Suricata, Snort, pfSense, and Linux, with practical exposure to SIEM alert investigation, IDS rule development, IOC enrichment, MITRE ATT&CK mapping, and incident triage. Strong scripting and automation skills using Python and REST APIs.
+                    Cybersecurity professional with an MSc in Cyber Security and hands-on experience at the intersection of Threat Intelligence, Vulnerability Assessment (VAPT), and Security Operations. Experienced in mapping C2 infrastructure, conducting OSINT research, and triaging security alerts. Proficient in building Python/Django automation to streamline IOC enrichment, discover exposed secrets, and map external attack surfaces (EASM).
                 </p>
                 
                 <div class="hero-actions">
                     <a href="#projects" class="btn btn-primary">View Projects</a>
-                    <!-- Updated PDF File Name -->
                     <a href="Anugrah%20Kizhakke%20Veedu.pdf" download="Anugrah Kizhakke Veedu.pdf" class="btn btn-outline"><i class="fas fa-download"></i> Download CV</a>
                 </div>
 
@@ -653,7 +651,6 @@
             
             <div class="hero-img-wrapper">
                 <div class="hero-img-backdrop"></div>
-                <!-- MAKE SURE YOUR IMAGE IS NAMED EXACTLY portfolio.jpeg -->
                 <img src="portfolio.jpeg" alt="Anugrah Kizhakke Veedu" class="hero-img" onerror="this.src='https://via.placeholder.com/350/0a0a0a/22d3ee?text=Photo'">
             </div>
         </div>
@@ -666,21 +663,39 @@
             
             <div class="skills-grid">
                 <div class="skill-category">
-                    <!-- Changed Icon to Shield-Halved for SOC -->
+                    <h4><i class="fas fa-shield-alt"></i> Vulnerability Assessment & AppSec</h4>
+                    <div class="tags">
+                        <span class="tag">Burp Suite</span> <span class="tag">Nuclei</span> 
+                        <span class="tag">Nessus</span> <span class="tag">MobSF (Mobile VAPT)</span> 
+                        <span class="tag">OWASP Top 10</span> <span class="tag">Web/API Security Testing</span>
+                        <span class="tag">Secure Coding</span> <span class="tag">Vulnerability Triage</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h4><i class="fas fa-biohazard"></i> Malware Analysis & Threat Intel</h4>
+                    <div class="tags">
+                        <span class="tag">Any.Run</span> <span class="tag">VirusTotal</span> 
+                        <span class="tag">AbuseIPDB</span> <span class="tag">IOC Extraction</span>
+                        <span class="tag">C2 Infrastructure Mapping</span> <span class="tag">Sandbox Analysis</span>
+                        <span class="tag">OSINT</span> <span class="tag">HUMINT concepts</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
                     <h4><i class="fas fa-shield-halved"></i> SOC & Security Operations</h4>
                     <div class="tags">
                         <span class="tag">Security Monitoring</span> <span class="tag">Alert Triage</span>
-                        <span class="tag">Threat Hunting</span> <span class="tag">Incident Response</span>
-                        <span class="tag">IOC Analysis</span> <span class="tag">Log Analysis</span>
-                        <span class="tag">Phishing Analysis</span> <span class="tag">Malware Analysis</span>
-                        <span class="tag">MITRE ATT&CK</span> <span class="tag">Threat Intelligence</span>
+                        <span class="tag">Threat Hunting</span> <span class="tag">Attack Surface Management (ASM)</span>
+                        <span class="tag">Digital Risk Protection (DRP)</span> <span class="tag">Log Analysis</span>
+                        <span class="tag">MITRE ATT&CK</span>
                     </div>
                 </div>
 
                 <div class="skill-category">
                     <h4><i class="fas fa-sitemap"></i> SIEM, IDS/IPS & Network Security</h4>
                     <div class="tags">
-                        <span class="tag">Wazuh</span> <span class="tag">ELK Stack (Elasticsearch, Logstash, Kibana)</span> 
+                        <span class="tag">Wazuh</span> <span class="tag">ELK Stack</span> 
                         <span class="tag">Splunk</span> <span class="tag">Suricata</span> 
                         <span class="tag">Snort</span> <span class="tag">pfSense</span>
                         <span class="tag">FortiGate</span> <span class="tag">Network Traffic Analysis</span>
@@ -688,42 +703,13 @@
                 </div>
 
                 <div class="skill-category">
-                    <h4><i class="fas fa-shield-alt"></i> Vulnerability Assessment & Web Security</h4>
-                    <div class="tags">
-                        <span class="tag">Burp Suite</span> <span class="tag">OWASP Top 10</span> 
-                        <span class="tag">Web Application Security Testing</span> <span class="tag">Vulnerability Assessment</span>
-                        <span class="tag">Secure Coding</span> <span class="tag">Input Validation</span>
-                        <span class="tag">Authentication & Session Security</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h4><i class="fas fa-biohazard"></i> Malware Analysis & Threat Intelligence</h4>
-                    <div class="tags">
-                        <span class="tag">Any.Run</span> <span class="tag">VirusTotal</span> 
-                        <span class="tag">AbuseIPDB</span> <span class="tag">IOC Extraction</span>
-                        <span class="tag">C2 Identification</span> <span class="tag">Sandbox Analysis</span>
-                        <span class="tag">OSINT</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h4><i class="fas fa-server"></i> Systems & Tools</h4>
-                    <div class="tags">
-                        <span class="tag">Linux/Ubuntu Server</span> <span class="tag">Kali Linux</span> 
-                        <span class="tag">Wireshark</span> <span class="tag">VirtualBox</span>
-                        <span class="tag">Command Line</span> <span class="tag">Git</span>
-                        <span class="tag">JSON</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h4><i class="fas fa-code"></i> Programming & Automation</h4>
+                    <h4><i class="fas fa-code"></i> Systems & Automation</h4>
                     <div class="tags">
                         <span class="tag">Python</span> <span class="tag">Django</span> 
                         <span class="tag">REST APIs</span> <span class="tag">JSON Parsing</span>
-                        <span class="tag">Security Automation</span> <span class="tag">Automated IOC Enrichment</span>
-                        <span class="tag">Triage Scripting</span>
+                        <span class="tag">Security Automation</span> <span class="tag">Triage Scripting</span>
+                        <span class="tag">Linux/Ubuntu Server</span> <span class="tag">Kali Linux</span>
+                        <span class="tag">Git</span>
                     </div>
                 </div>
             </div>
@@ -742,14 +728,13 @@
                             <h3>Web Application Developer Intern - Security & Infrastructure Focus</h3>
                             <h4>Btrac Solutions • Kerala, India</h4>
                         </div>
-                        <!-- Updated Date -->
                         <div class="timeline-date">July 2022 - Mar 2023</div>
                     </div>
                     <ul class="bullet-list">
                         <li>Supported application and infrastructure operations across internal evaluation systems and 3 client-facing hosting nodes, including monitoring, maintenance, security updates, and troubleshooting.</li>
-                        <li>Performed security-focused testing of web applications using OWASP Top 10 principles and Burp Suite techniques to identify common application vulnerabilities before deployment.</li>
+                        <li>Performed VAPT across web applications using OWASP Top 10 principles and Burp Suite to identify, triage, and prioritize common application vulnerabilities before deployment.</li>
                         <li>Collaborated with development and infrastructure teams to deploy application updates and security patches across staging and production environments.</li>
-                        <li>Developed and maintained Python/Django components with emphasis on secure authentication, input validation, database security, and protection of sensitive application data.</li>
+                        <li>Developed and maintained Python/Django components with emphasis on secure authentication, input validation, database security, and protection of sensitive data.</li>
                     </ul>
                 </div>
             </div>
@@ -763,47 +748,42 @@
             
             <div class="projects-grid">
                 
-                <!-- Project 1: IDS System -->
+                <!-- NEW Project 1: Digital Risk Protection -->
                 <div class="project-card">
                     <div class="project-header">
                         <div>
-                            <h3 class="project-title">Intrusion Detection & Threat Monitoring System</h3>
-                            <div class="project-meta">Master's Project - Teesside University • Sept 2023 - Sept 2024</div>
+                            <h3 class="project-title">Digital Risk Protection (DRP) Automation</h3>
+                            <div class="project-meta">Threat Intel Automation • Nov 2026</div>
                         </div>
-                        <a href="https://github.com/Anugrahkv/ids" target="_blank" title="View Code" style="color: var(--muted);"><i class="fab fa-github fa-lg"></i></a>
+                        <a href="https://github.com/Anugrahkv/github-secret-scanner" target="_blank" title="View Code" style="color: var(--muted);"><i class="fab fa-github fa-lg"></i></a>
                     </div>
                     <div class="tags">
-                        <span class="tag">Ubuntu Server</span> <span class="tag">pfSense</span>
-                        <span class="tag">Suricata</span> <span class="tag">Elasticsearch</span>
-                        <span class="tag">Logstash</span> <span class="tag">Kibana</span>
+                        <span class="tag">Python</span> <span class="tag">GitHub REST API</span>
+                        <span class="tag">JSON</span> <span class="tag">OSINT</span>
+                        <span class="tag">Threat Intelligence</span>
                     </div>
                     <ul class="bullet-list" style="flex-grow: 1;">
-                        <li>Designed and deployed a layered network security environment integrating pfSense firewall, Suricata IDS, and the ELK Stack for centralized security monitoring.</li>
-                        <li>Built a centralized log pipeline using Elasticsearch, Logstash, and Kibana to collect, process, visualize, and investigate security events from multiple sources.</li>
-                        <li>Developed and tested 15+ custom Suricata detection rules for network threats and security events, improving visibility into suspicious traffic.</li>
-                        <li>Reduced manual log review time by approximately 30% through centralized security event collection and visualization.</li>
-                        <li>Investigated IDS alerts and correlated network events with relevant MITRE ATT&CK techniques and known vulnerability patterns.</li>
+                        <li>Developed a Python-based GitHub secret scanner utilizing the GitHub REST API to proactively detect exposed AWS credentials (AKIA) and private RSA keys across public repositories.</li>
+                        <li>Demonstrated automated threat intelligence gathering and OSINT capabilities, mimicking enterprise credential leak detection.</li>
                     </ul>
                 </div>
 
-                <!-- Project 2: Home Lab -->
+                <!-- NEW Project 2: External Attack Surface Management -->
                 <div class="project-card">
                     <div class="project-header">
                         <div>
-                            <h3 class="project-title">Active SOC Home Lab & Threat Hunting Environment</h3>
-                            <div class="project-meta">Independent Lab • July 2026</div>
+                            <h3 class="project-title">External Attack Surface Management (EASM)</h3>
+                            <div class="project-meta">Infrastructure Mapping • Nov 2026</div>
                         </div>
-                        <a href="https://github.com/Anugrahkv/SOC-lab" target="_blank" title="View Code" style="color: var(--muted);"><i class="fab fa-github fa-lg"></i></a>
+                        <a href="https://github.com/Anugrahkv/easm-subdomain-mapper" target="_blank" title="View Code" style="color: var(--muted);"><i class="fab fa-github fa-lg"></i></a>
                     </div>
                     <div class="tags">
-                        <span class="tag">VirtualBox</span> <span class="tag">Wazuh SIEM</span>
-                        <span class="tag">Snort IDS</span> <span class="tag">Kali Linux</span> <span class="tag">Linux</span>
+                        <span class="tag">Python</span> <span class="tag">HackerTarget API</span>
+                        <span class="tag">Concurrent Threads</span> <span class="tag">HTTP Probing</span>
                     </div>
                     <ul class="bullet-list" style="flex-grow: 1;">
-                        <li>Built a segmented virtual SOC environment using VirtualBox with isolated NAT and Host-Only networks for controlled attack simulation and security monitoring.</li>
-                        <li>Deployed Wazuh as the central SIEM and integrated Snort IDS to collect, correlate, and investigate security events generated within the lab environment.</li>
-                        <li>Simulated attacker activity from Kali Linux against a Linux victim system and validated SIEM detection, alert generation, and investigation workflows.</li>
-                        <li>Practiced SOC workflows including event analysis, suspicious activity investigation, alert triage, and identification of potential indicators of compromise.</li>
+                        <li>Engineered an automated Python reconnaissance tool integrating with OSINT APIs and concurrent HTTP probing to enumerate, map, and validate live subdomains and forgotten cloud assets.</li>
+                        <li>Streamlined infrastructure hunting workflows to identify potential attack vectors, including dangling DNS records and exposed administrative portals.</li>
                     </ul>
                 </div>
 
@@ -822,9 +802,8 @@
                     </div>
                     <ul class="bullet-list" style="flex-grow: 1;">
                         <li>Analyzed malicious macro-enabled documents in an isolated Any.Run sandbox, examining process execution, network activity, and behavioral indicators.</li>
-                        <li>Extracted Indicators of Compromise (IOCs), including suspicious IP addresses, domains, user-agent activity, and Command-and-Control (C2) communication patterns.</li>
+                        <li>Extracted Indicators of Compromise (IOCs), including suspicious IPs, domains, and leaked credentials, and successfully mapped Command-and-Control (C2) infrastructure using OSINT techniques.</li>
                         <li>Correlated malware network activity with Suricata alerts and mapped observed attacker behaviors to relevant MITRE ATT&CK tactics and techniques.</li>
-                        <li>Documented findings as actionable threat intelligence for detection and incident investigation.</li>
                     </ul>
                 </div>
 
@@ -839,33 +818,50 @@
                     </div>
                     <div class="tags">
                         <span class="tag">Python</span> <span class="tag">Django</span>
-                        <span class="tag">VirusTotal API v3</span> <span class="tag">AbuseIPDB API</span>
+                        <span class="tag">VirusTotal API</span> <span class="tag">AbuseIPDB API</span>
                         <span class="tag">REST</span> <span class="tag">JSON</span>
                     </div>
                     <ul class="bullet-list" style="flex-grow: 1;">
-                        <li>Developed a Python/Django-based SOC triage dashboard to automate IOC enrichment and reduce repetitive manual investigation tasks.</li>
-                        <li>Integrated VirusTotal and AbuseIPDB REST APIs to retrieve malware intelligence, IP reputation, and multi-source threat information.</li>
-                        <li>Implemented backend processing and JSON parsing to automatically classify and enrich submitted indicators for analyst investigation.</li>
-                        <li>Validated the workflow using known malicious hashes and suspicious scanner IPs to test enrichment results and triage logic.</li>
+                        <li>Developed a Python/Django-based security dashboard to automate IOC enrichment and significantly cut down redundant manual steps in research and reporting.</li>
+                        <li>Integrated REST APIs to retrieve malware intelligence, IP reputation, and multi-source threat information, parsing JSON to automatically classify indicators for faster analyst triage.</li>
                     </ul>
                 </div>
 
-                <!-- Project 5: TrippyGo -->
+                <!-- Project 5: IDS System -->
                 <div class="project-card">
                     <div class="project-header">
                         <div>
-                            <h3 class="project-title">TrippyGo - Secure Full-Stack Web Application</h3>
-                            <div class="project-meta">Bachelor's Project - Kannur University • 2023</div>
+                            <h3 class="project-title">Intrusion Detection & Threat Monitoring System</h3>
+                            <div class="project-meta">Master's Project - Teesside University • 2023 - 2024</div>
                         </div>
-                        <a href="https://github.com/Anugrahkv/trippygo" target="_blank" title="View Code" style="color: var(--muted);"><i class="fab fa-github fa-lg"></i></a>
+                        <a href="https://github.com/Anugrahkv/ids" target="_blank" title="View Code" style="color: var(--muted);"><i class="fab fa-github fa-lg"></i></a>
                     </div>
                     <div class="tags">
-                        <span class="tag">Python</span> <span class="tag">Django</span>
-                        <span class="tag">HTML</span> <span class="tag">CSS</span> <span class="tag">SQLite</span>
+                        <span class="tag">Ubuntu Server</span> <span class="tag">pfSense</span>
+                        <span class="tag">Suricata</span> <span class="tag">ELK Stack</span>
                     </div>
                     <ul class="bullet-list" style="flex-grow: 1;">
-                        <li>Developed a full-stack Django web application with security-focused authentication, input validation, database access controls, and session management.</li>
-                        <li>Applied secure development practices to mitigate common web vulnerabilities including SQL injection and Cross-Site Scripting (XSS).</li>
+                        <li>Designed and deployed a layered network security environment integrating pfSense firewall, Suricata IDS, and the ELK Stack for centralized security monitoring.</li>
+                        <li>Developed and tested 15+ custom Suricata detection rules for network threats and security events, improving visibility into suspicious traffic.</li>
+                    </ul>
+                </div>
+
+                <!-- Project 6: Home Lab -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <h3 class="project-title">Active SOC Home Lab & Threat Hunting Environment</h3>
+                            <div class="project-meta">Independent Lab • July 2026</div>
+                        </div>
+                        <a href="https://github.com/Anugrahkv/SOC-lab" target="_blank" title="View Code" style="color: var(--muted);"><i class="fab fa-github fa-lg"></i></a>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">VirtualBox</span> <span class="tag">Wazuh SIEM</span>
+                        <span class="tag">Snort IDS</span> <span class="tag">Kali Linux</span> <span class="tag">Linux</span>
+                    </div>
+                    <ul class="bullet-list" style="flex-grow: 1;">
+                        <li>Built a segmented virtual SOC environment using VirtualBox with isolated NAT and Host-Only networks for controlled attack simulation and security monitoring.</li>
+                        <li>Deployed Wazuh as the central SIEM and integrated Snort IDS to collect, correlate, and investigate security events.</li>
                     </ul>
                 </div>
 
@@ -1036,27 +1032,28 @@
                 toggleIcon.classList.add('fa-bars');
             }
         }
+        
         const body = document.body;
-        const themeIcon = document.getElementById('theme-icon');
+        const themeBtn = document.getElementById('theme-toggle-btn');
 
         // Check local storage for theme preference
         if (localStorage.getItem('theme') === 'light') {
             body.setAttribute('data-theme', 'light');
-            themeIcon.innerHTML = '<i class="fas fa-sun"></i>';
+            themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
         } else {
             body.removeAttribute('data-theme');
-            themeIcon.innerHTML = '<i class="fas fa-moon"></i>';
+            themeBtn.innerHTML = '<i class="fas fa-moon"></i>';
         }
 
         function toggleTheme() {
             if (body.getAttribute('data-theme') === 'light') {
                 body.removeAttribute('data-theme');
                 localStorage.setItem('theme', 'dark');
-                themeIcon.innerHTML = '<i class="fas fa-moon"></i>';
+                themeBtn.innerHTML = '<i class="fas fa-moon"></i>';
             } else {
                 body.setAttribute('data-theme', 'light');
                 localStorage.setItem('theme', 'light');
-                themeIcon.innerHTML = '<i class="fas fa-sun"></i>';
+                themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
             }
         }
     </script>
